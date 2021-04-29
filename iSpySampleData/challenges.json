@@ -1,0 +1,40 @@
+{
+  "challenges": [
+    {
+      "photo": "alcatraz-island.jpg",
+      "hint": "Discovered by Juan Manuel de Ayala in 1775, this San Francisco Bay landmark was once occupied by Native Americans to protest federal policies related to American Indians.",
+      "latitude": 37.82672,
+      "longitude": -122.42106  
+    },
+    {
+      "photo": "transamerica_pyramid.jpg",
+      "hint": "This iconic structure marks the location of the historic whaling vessel Nianic, an artifact of the 1849 California Gold Rush.",
+      "latitude": 37.79516,
+      "longitude": -122.40273
+    },
+    {
+      "photo": "moscone-center-west.jpg",
+      "hint": "Many a developer has slept all night on the streets surrounding this three-level exhibition hall.",
+      "latitude": 37.78309,
+      "longitude": -122.40401
+    },
+    {
+      "photo": "transbay-terminal.jpg",
+      "hint": "This historic landmark opened in 1939 and closed in 2010. Riders on Golden Gate Transit, AC Transit, SamTrans, Greyhound and Amtrak passed through this location on their way to surrounding communities of the Bay Area.",
+      "latitude": 37.78994,
+      "longitude": -122.39339
+    },
+    {
+      "photo": "galvanize.jpg",
+      "hint": "The Front Door of the Tech Industry; five floors of creators, innovators, and passionate learners. This campus is full of energy, intelligence, and motivation.",
+      "latitude": 37.78744,
+      "longitude": -122.39648
+    },
+    {
+      "photo": "coit-tower.jpg",
+      "hint": "Spectacular panoramic views of San Francisco including \"crooked\" Lombard Street, Nob Hill, Russian Hill, Twin Peaks, Aquatic Park, Pier 39, the Financial District, the Ferry Building, as well as San Francisco Bay itself including Angel Island, Alcatraz, Treasure Island, and the Golden Gate and Bay Bridges can be seen from here.  Some say it’s shape resembles a fire hose!",
+      "latitude": 37.80269,
+      "longitude": -122.40584
+    }
+  ]
+}
