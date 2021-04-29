@@ -15,6 +15,7 @@
 		9660CD34263B2D1E006B9352 /* transbay-terminal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2C263B2D1E006B9352 /* transbay-terminal.jpg */; };
 		9660CD35263B2D1E006B9352 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2D263B2D1E006B9352 /* users.json */; };
 		9660CD36263B2D1E006B9352 /* coit-tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2E263B2D1E006B9352 /* coit-tower.jpg */; };
+		964DA683263A2EDB004D1B3B /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964DA682263A2EDB004D1B3B /* PhotoController.swift */; };
 		E0028788263A06EC00C65841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0028787263A06EC00C65841 /* AppDelegate.swift */; };
 		E002878A263A06EC00C65841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0028789263A06EC00C65841 /* SceneDelegate.swift */; };
 		E002878F263A06EC00C65841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E002878D263A06EC00C65841 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		9660CD2C263B2D1E006B9352 /* transbay-terminal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "transbay-terminal.jpg"; sourceTree = "<group>"; };
 		9660CD2D263B2D1E006B9352 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		9660CD2E263B2D1E006B9352 /* coit-tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coit-tower.jpg"; sourceTree = "<group>"; };
+		964DA682263A2EDB004D1B3B /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		E0028784263A06EC00C65841 /* iSpyChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSpyChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0028787263A06EC00C65841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0028789263A06EC00C65841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 			path = iSpySampleData;
 			sourceTree = "<group>";
 		};
+		964DA681263A2EC4004D1B3B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				964DA682263A2EDB004D1B3B /* PhotoController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		E002877B263A06EC00C65841 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 				E0028792263A06EC00C65841 /* LaunchScreen.storyboard */,
 				E002878D263A06EC00C65841 /* Main.storyboard */,
 				E089E97F263A0A0F0054543D /* iSpyTabBarController.swift */,
+				964DA681263A2EC4004D1B3B /* Controllers */,
 				E089E982263A0BF70054543D /* New Challenge */,
 				E089E983263A0C010054543D /* Near Me */,
 				E089E984263A0C100054543D /* Data Browser */,
@@ -255,6 +266,7 @@
 				E089E9AB263A193B0054543D /* Match.swift in Sources */,
 				E089E99F263A173B0054543D /* ManagedObjectType.swift in Sources */,
 				E089E9A2263A17D20054543D /* User.swift in Sources */,
+				964DA683263A2EDB004D1B3B /* PhotoController.swift in Sources */,
 				E089E9AF263A1C710054543D /* DataController.swift in Sources */,
 				E089E9A8263A18DA0054543D /* Rating.swift in Sources */,
 				E089E980263A0A0F0054543D /* iSpyTabBarController.swift in Sources */,
