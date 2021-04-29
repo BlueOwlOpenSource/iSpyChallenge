@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 
 class PhotoController {
-    lazy var urlForPhotoStorage: URL = {
+    private lazy var urlForPhotoStorage: URL = {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
         let photoPath = documentsDirectory.appendingPathComponent("iSpyPhotos")
         return photoPath
@@ -59,7 +59,7 @@ class PhotoController {
             let directoryPath = urlForPhotoStorage.path
             let filePaths = try fileManager.contentsOfDirectory(atPath: directoryPath)
             for filePath in filePaths {
-                try fileManager.removeItem(atPath: directoryPath + filePath)
+                try fileManager.removeItem(at: urlForPhotoStorage.appendingPathComponent(filePath))
             }
         }
         catch {
