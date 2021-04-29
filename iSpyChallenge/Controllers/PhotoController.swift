@@ -8,6 +8,8 @@ import Foundation
 import UIKit
 
 class PhotoController {
+    
+    /// Directory url for where photos will be stored.
     private lazy var urlForPhotoStorage: URL = {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
         let photoPath = documentsDirectory.appendingPathComponent("iSpyPhotos")
@@ -18,6 +20,9 @@ class PhotoController {
         try setupPhotoDirectory()
     }
     
+    /// Fetches photo from the iSpyPhotos directory given the photo name.
+    /// - Parameter name: name of photo
+    /// - Returns: the UIImage if it exists
     func photo(withName name: String) -> UIImage? {
         do {
             let photoUrl = urlForPhoto(withName: name)
@@ -31,6 +36,11 @@ class PhotoController {
         }
     }
     
+    
+    /// Saves a photo to the iSpyPhotos directory.
+    /// - Parameters:
+    ///   - name: name of photo
+    ///   - image: the UIImage you'd like to save
     func addPhoto(withName name: String, image: UIImage) {
         do {
             let imageData = image.jpegData(compressionQuality: 1.0)
@@ -42,6 +52,9 @@ class PhotoController {
         }
     }
     
+    
+    /// Removes a specific photo given the photo name.
+    /// - Parameter name: name of photo
     func removePhoto(withName name: String) {
         do {
             let url = urlForPhoto(withName: name)
@@ -53,6 +66,8 @@ class PhotoController {
         }
     }
     
+    
+    /// Deletes all photos in the iSpyPhotos directory.
     func removeAllPhotos() {
         do {
             let fileManager = FileManager.default
@@ -69,6 +84,9 @@ class PhotoController {
 }
 
 extension PhotoController {
+    
+    /// Creates a directory for photo storage if there isn't already one.
+    /// - Throws: Throws error if filemanager failed to create the directory
     func setupPhotoDirectory() throws {
         let fileManager = FileManager.default
         var isDirectory: ObjCBool = false
@@ -82,6 +100,9 @@ extension PhotoController {
         }
     }
     
+    /// Returns the url for a stored photo given the photo name.
+    /// - Parameter name: name of photo
+    /// - Returns: photo's url
     func urlForPhoto(withName name: String) -> URL {
         let photoUrl = urlForPhotoStorage.appendingPathComponent(name).appendingPathExtension("jpg")
         return photoUrl
