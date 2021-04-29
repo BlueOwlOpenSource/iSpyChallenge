@@ -48,7 +48,7 @@ class PhotoController {
             try imageData?.write(to: url, options: .atomic)
         }
         catch {
-            print("Error adding photo: \(error.localizedDescription)")
+            print("Error adding photo: \(error.localizedDescription).")
         }
     }
     
@@ -62,7 +62,7 @@ class PhotoController {
             try fileManager.removeItem(at: url)
         }
         catch {
-            print("Error removing photo: \(error.localizedDescription)")
+            print("Error removing photo: \(error.localizedDescription).")
         }
     }
     
@@ -78,7 +78,7 @@ class PhotoController {
             }
         }
         catch {
-            print("Error removing all photos: \(error.localizedDescription)")
+            print("Error removing all photos: \(error.localizedDescription).")
         }
     }
 }
@@ -96,7 +96,7 @@ extension PhotoController {
             try fileManager.createDirectory(atPath: photoPath, withIntermediateDirectories: true, attributes: nil)
         }
         else {
-            print("Photo storage path already exists")
+            print("Photo storage path already exists.")
         }
     }
     
