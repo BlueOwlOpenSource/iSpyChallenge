@@ -16,6 +16,8 @@
 		9660CD34263B2D1E006B9352 /* transbay-terminal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2C263B2D1E006B9352 /* transbay-terminal.jpg */; };
 		9660CD35263B2D1E006B9352 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2D263B2D1E006B9352 /* users.json */; };
 		9660CD36263B2D1E006B9352 /* coit-tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2E263B2D1E006B9352 /* coit-tower.jpg */; };
+		96ABE8022640CFF20045C456 /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8012640CFF20045C456 /* UserResult.swift */; };
+		96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8042640D0500045C456 /* ChallengeResult.swift */; };
 		E0028788263A06EC00C65841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0028787263A06EC00C65841 /* AppDelegate.swift */; };
 		E002878A263A06EC00C65841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0028789263A06EC00C65841 /* SceneDelegate.swift */; };
 		E002878F263A06EC00C65841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E002878D263A06EC00C65841 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		9660CD2C263B2D1E006B9352 /* transbay-terminal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "transbay-terminal.jpg"; sourceTree = "<group>"; };
 		9660CD2D263B2D1E006B9352 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		9660CD2E263B2D1E006B9352 /* coit-tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coit-tower.jpg"; sourceTree = "<group>"; };
+		96ABE8012640CFF20045C456 /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
+		96ABE8042640D0500045C456 /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
 		E0028784263A06EC00C65841 /* iSpyChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSpyChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0028787263A06EC00C65841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0028789263A06EC00C65841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		9660CD26263B2D0A006B9352 /* iSpySampleData */ = {
 			isa = PBXGroup;
 			children = (
+				96ABE8002640CFBB0045C456 /* Codables */,
 				9660CD29263B2D1E006B9352 /* alcatraz-island.jpg */,
 				9660CD2E263B2D1E006B9352 /* coit-tower.jpg */,
 				9660CD2B263B2D1E006B9352 /* galvanize.jpg */,
@@ -100,6 +105,15 @@
 				9660CD2D263B2D1E006B9352 /* users.json */,
 			);
 			path = iSpySampleData;
+			sourceTree = "<group>";
+		};
+		96ABE8002640CFBB0045C456 /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				96ABE8012640CFF20045C456 /* UserResult.swift */,
+				96ABE8042640D0500045C456 /* ChallengeResult.swift */,
+			);
+			path = Codables;
 			sourceTree = "<group>";
 		};
 		E002877B263A06EC00C65841 = {
@@ -280,6 +294,7 @@
 				E089E9AB263A193B0054543D /* Match.swift in Sources */,
 				E089E99F263A173B0054543D /* ManagedObjectType.swift in Sources */,
 				E07E587B263C9EB10026F912 /* DataBrowserTableViewController.swift in Sources */,
+				96ABE8022640CFF20045C456 /* UserResult.swift in Sources */,
 				E089E9A2263A17D20054543D /* User.swift in Sources */,
 				964DA683263A2EDB004D1B3B /* PhotoController.swift in Sources */,
 				E07E587F263CAA760026F912 /* UIViewController+iSpy.swift in Sources */,
@@ -287,6 +302,7 @@
 				E089E9A8263A18DA0054543D /* Rating.swift in Sources */,
 				E089E980263A0A0F0054543D /* iSpyTabBarController.swift in Sources */,
 				E089E997263A0DCA0054543D /* iSpy.xcdatamodeld in Sources */,
+				96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */,
 				E002878A263A06EC00C65841 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,6 +43,10 @@ class DataBrowserTableViewController: UITableViewController, DataControllerInjec
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: - Configure Table View Cell
     
     private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
