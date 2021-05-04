@@ -7,6 +7,10 @@
 import Foundation
 import UIKit
 
+protocol PhotoControllerInjectable: AnyObject {
+    var photoController: PhotoController! { get set }
+}
+
 class PhotoController {
     
     /// Directory url for where photos will be stored.

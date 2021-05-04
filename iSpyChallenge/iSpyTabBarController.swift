@@ -17,11 +17,23 @@ class iSpyTabBarController: UITabBarController {
             }
         }
     }
-
+    
+    private var photoController: PhotoController! {
+        didSet {
+            if let viewControllers = viewControllers {
+                for vc in viewControllers where vc.contentViewController is PhotoControllerInjectable {
+                    (vc.contentViewController as! PhotoControllerInjectable).photoController = photoController
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         dataController = try! DataController.init(managedObjectModuleName: "iSpy", persistentStoreType: NSSQLiteStoreType, managedObjectModuleBundle: .main)
+        
+        photoController = try! PhotoController()
     }
 }
