@@ -9,19 +9,19 @@ import UIKit
 import CoreData
 
 enum UserSectionType: String {
-    case Attributes
-    case Relationships
+    case attributes
+    case relationships
 }
 
 enum UserRowType: String {
-    case Username
-    case Email
-    case AvatarLargeHref
-    case AvatarMediumHref
-    case AvatarThumbnailHref
-    case Challenges
-    case Matches
-    case Ratings
+    case username
+    case email
+    case avatarLargeHref
+    case avatarMediumHref
+    case avatarThumbnailHref
+    case challenges
+    case matches
+    case ratings
 }
 
 struct UserRow {
@@ -39,18 +39,18 @@ struct UserViewModel {
     let sections: [UserSection]
     
     init(user: User?) {
-        let attributeSection = UserSection(type: .Attributes, rows: [
-            UserRow(type: .Username, title: user?.username, detail: "username"),
-            UserRow(type: .Email, title: user?.email, detail: "email"),
-            UserRow(type: .AvatarLargeHref, title: user?.avatarLargeHref, detail: "avatarLargeHref"),
-            UserRow(type: .AvatarMediumHref, title: user?.avatarMediumHref, detail: "avatarMediumHref"),
-            UserRow(type: .AvatarThumbnailHref, title: user?.avatarThumbnailHref, detail: "avatarThumbnailHref")
+        let attributeSection = UserSection(type: .attributes, rows: [
+            UserRow(type: .username, title: user?.username, detail: "username"),
+            UserRow(type: .email, title: user?.email, detail: "email"),
+            UserRow(type: .avatarLargeHref, title: user?.avatarLargeHref, detail: "avatarLargeHref"),
+            UserRow(type: .avatarMediumHref, title: user?.avatarMediumHref, detail: "avatarMediumHref"),
+            UserRow(type: .avatarThumbnailHref, title: user?.avatarThumbnailHref, detail: "avatarThumbnailHref")
         ])
         
-        let relationshipSection = UserSection(type: .Relationships, rows: [
-            UserRow(type: .Challenges, title: "Challenges", detail: nil),
-            UserRow(type: .Matches, title: "Matches", detail: nil),
-            UserRow(type: .Ratings, title: "Ratings", detail: nil)
+        let relationshipSection = UserSection(type: .relationships, rows: [
+            UserRow(type: .challenges, title: "Challenges", detail: nil),
+            UserRow(type: .matches, title: "Matches", detail: nil),
+            UserRow(type: .ratings, title: "Ratings", detail: nil)
         ])
         
         self.sections = [attributeSection, relationshipSection]
@@ -89,7 +89,7 @@ class UserTableViewController: UITableViewController, DataControllerInjectable, 
         cell.textLabel?.text = row?.title
         cell.detailTextLabel?.text = row?.detail
         
-        if section?.type == .Attributes {
+        if section?.type == .attributes {
             cell.accessoryType = .none
         }
         else {
@@ -109,11 +109,11 @@ class UserTableViewController: UITableViewController, DataControllerInjectable, 
         let row = section?.rows[indexPath.row]
         
         switch row?.type {
-        case .Challenges:
+        case .challenges:
             performSegue(withIdentifier: "ShowChallenges", sender: self)
-        case .Matches:
+        case .matches:
             performSegue(withIdentifier: "ShowMatches", sender: self)
-        case .Ratings:
+        case .ratings:
             performSegue(withIdentifier: "ShowRatings", sender: self)
         default:
             break

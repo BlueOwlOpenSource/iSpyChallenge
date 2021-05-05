@@ -9,18 +9,18 @@ import UIKit
 import CoreData
 
 enum ChallengeSectionType: String {
-    case Attributes
-    case Relationships
+    case attributes
+    case relationships
 }
 
 enum ChallengeRowType: String {
-    case Hint
-    case Latitude
-    case Longitude
-    case PhotoHref
-    case Creator
-    case Matches
-    case Ratings
+    case hint
+    case latitude
+    case longitude
+    case photoHref
+    case creator
+    case matches
+    case ratings
 }
 
 struct ChallengeRow {
@@ -38,17 +38,17 @@ struct ChallengeViewModel {
     let sections: [ChallengeSection]
     
     init(challenge: Challenge?) {
-        let attributeSection = ChallengeSection(type: .Attributes, rows: [
-            ChallengeRow(type: .Hint, title: challenge?.hint, detail: "hint"),
-            ChallengeRow(type: .Latitude, title: String(format: "%.5f", challenge!.latitude), detail: "latitude"),
-            ChallengeRow(type: .Longitude, title: String(format: "%.5f", challenge!.longitude), detail: "longitude"),
-            ChallengeRow(type: .PhotoHref, title: challenge?.photoHref, detail: "photoHref")
+        let attributeSection = ChallengeSection(type: .attributes, rows: [
+            ChallengeRow(type: .hint, title: challenge?.hint, detail: "hint"),
+            ChallengeRow(type: .latitude, title: String(format: "%.5f", challenge!.latitude), detail: "latitude"),
+            ChallengeRow(type: .longitude, title: String(format: "%.5f", challenge!.longitude), detail: "longitude"),
+            ChallengeRow(type: .photoHref, title: challenge?.photoHref, detail: "photoHref")
         ])
         
-        let relationshipSection = ChallengeSection(type: .Relationships, rows: [
-            ChallengeRow(type: .Creator, title: "Creator", detail: nil),
-            ChallengeRow(type: .Matches, title: "Matches", detail: nil),
-            ChallengeRow(type: .Ratings, title: "Ratings", detail: nil),
+        let relationshipSection = ChallengeSection(type: .relationships, rows: [
+            ChallengeRow(type: .creator, title: "Creator", detail: nil),
+            ChallengeRow(type: .matches, title: "Matches", detail: nil),
+            ChallengeRow(type: .ratings, title: "Ratings", detail: nil),
         ])
         
         self.sections = [attributeSection, relationshipSection]
@@ -87,7 +87,7 @@ class ChallengeTableViewController: UITableViewController, DataControllerInjecta
         cell.textLabel?.text = row?.title
         cell.detailTextLabel?.text = row?.detail
         
-        if section?.type == .Attributes {
+        if section?.type == .attributes {
             cell.accessoryType = .none
         }
         else {
@@ -107,11 +107,11 @@ class ChallengeTableViewController: UITableViewController, DataControllerInjecta
         let row = section?.rows[indexPath.row]
         
         switch row?.type {
-        case .Creator:
+        case .creator:
             performSegue(withIdentifier: "ShowUser", sender: self)
-        case .Matches:
+        case .matches:
             performSegue(withIdentifier: "ShowMatches", sender: self)
-        case .Ratings:
+        case .ratings:
             performSegue(withIdentifier: "ShowRatings", sender: self)
         default:
             break

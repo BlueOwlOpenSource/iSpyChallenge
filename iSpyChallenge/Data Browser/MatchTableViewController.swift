@@ -9,17 +9,17 @@ import UIKit
 import CoreData
 
 enum MatchSectionType: String {
-    case Attributes
-    case Relationships
+    case attributes
+    case relationships
 }
 
 enum MatchRowType: String {
-    case Latitude
-    case Longitude
-    case PhotoHref
-    case Verified
-    case Challenge
-    case Player
+    case latitude
+    case longitude
+    case photoHref
+    case verified
+    case challenge
+    case player
 }
 
 struct MatchRow {
@@ -37,16 +37,16 @@ struct MatchViewModel {
     let sections: [MatchSection]
     
     init(match: Match?) {
-        let attributeSection = MatchSection(type: .Attributes, rows: [
-            MatchRow(type: .Latitude, title: String(format: "%.5f", match!.latitude), detail: "latitude"),
-            MatchRow(type: .Longitude, title: String(format: "%.5f", match!.longitude), detail: "longitude"),
-            MatchRow(type: .PhotoHref, title: match?.photoHref, detail: "photoHref"),
-            MatchRow(type: .Verified, title: match!.verified ? "True" : "False", detail: "verified")
+        let attributeSection = MatchSection(type: .attributes, rows: [
+            MatchRow(type: .latitude, title: String(format: "%.5f", match!.latitude), detail: "latitude"),
+            MatchRow(type: .longitude, title: String(format: "%.5f", match!.longitude), detail: "longitude"),
+            MatchRow(type: .photoHref, title: match?.photoHref, detail: "photoHref"),
+            MatchRow(type: .verified, title: match!.verified ? "True" : "False", detail: "verified")
         ])
         
-        let relationshipSection = MatchSection(type: .Relationships, rows: [
-            MatchRow(type: .Challenge, title: "Challenge", detail: nil),
-            MatchRow(type: .Player, title: "Player", detail: nil)
+        let relationshipSection = MatchSection(type: .relationships, rows: [
+            MatchRow(type: .challenge, title: "Challenge", detail: nil),
+            MatchRow(type: .player, title: "Player", detail: nil)
         ])
         
         self.sections = [attributeSection, relationshipSection]
@@ -85,7 +85,7 @@ class MatchTableViewController: UITableViewController, DataControllerInjectable,
         cell.textLabel?.text = row?.title
         cell.detailTextLabel?.text = row?.detail
         
-        if section?.type == .Attributes {
+        if section?.type == .attributes {
             cell.accessoryType = .none
         }
         else {
@@ -105,9 +105,9 @@ class MatchTableViewController: UITableViewController, DataControllerInjectable,
         let row = section?.rows[indexPath.row]
         
         switch row?.type {
-        case .Challenge:
+        case .challenge:
             performSegue(withIdentifier: "ShowChallenge", sender: self)
-        case .Player:
+        case .player:
             performSegue(withIdentifier: "ShowPlayer", sender: self)
         default:
             break
