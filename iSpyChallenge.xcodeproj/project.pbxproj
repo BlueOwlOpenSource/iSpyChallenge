@@ -27,6 +27,7 @@
 		96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8042640D0500045C456 /* ChallengeResult.swift */; };
 		96ABE8082641CC890045C456 /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */; };
 		96ABE80B2641E62C0045C456 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE80A2641E62C0045C456 /* UserTableViewController.swift */; };
+		96C487E22643267E004D4D54 /* FetchedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C487E12643267E004D4D54 /* FetchedTableViewController.swift */; };
 		E0028788263A06EC00C65841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0028787263A06EC00C65841 /* AppDelegate.swift */; };
 		E002878A263A06EC00C65841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0028789263A06EC00C65841 /* SceneDelegate.swift */; };
 		E002878F263A06EC00C65841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E002878D263A06EC00C65841 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		96ABE8042640D0500045C456 /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
 		96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
 		96ABE80A2641E62C0045C456 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		96C487E12643267E004D4D54 /* FetchedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedTableViewController.swift; sourceTree = "<group>"; };
 		E0028784263A06EC00C65841 /* iSpyChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSpyChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0028787263A06EC00C65841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0028789263A06EC00C65841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				968A15E2264227FD0017D10B /* Matches.storyboard */,
 				968A15EA2642285C0017D10B /* Challenges.storyboard */,
 				968A15E72642284A0017D10B /* Ratings.storyboard */,
+				96C487E12643267E004D4D54 /* FetchedTableViewController.swift */,
 				E07E587A263C9EB10026F912 /* DataBrowserTableViewController.swift */,
 				96ABE80A2641E62C0045C456 /* UserTableViewController.swift */,
 				96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */,
@@ -337,6 +340,7 @@
 				E089E997263A0DCA0054543D /* iSpy.xcdatamodeld in Sources */,
 				96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */,
 				96ABE80B2641E62C0045C456 /* UserTableViewController.swift in Sources */,
+				96C487E22643267E004D4D54 /* FetchedTableViewController.swift in Sources */,
 				E002878A263A06EC00C65841 /* SceneDelegate.swift in Sources */,
 				968A15E0264221100017D10B /* MatchTableViewController.swift in Sources */,
 				968A15DD264219800017D10B /* ChallengeTableViewController.swift in Sources */,

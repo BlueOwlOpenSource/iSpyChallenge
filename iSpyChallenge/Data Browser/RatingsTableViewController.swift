@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class RatingsTableViewController: UITableViewController, DataControllerInjectable, UserInjectable, ChallengeInjectable {
+class RatingsTableViewController: FetchedTableViewController, DataControllerInjectable, UserInjectable, ChallengeInjectable {
     var dataController: DataController!
     var user: User?
     var challenge: Challenge?
@@ -58,51 +58,9 @@ class RatingsTableViewController: UITableViewController, DataControllerInjectabl
 
     // MARK: - Configure Table View Cell
     
-    private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
+    override func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let rating = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = String(format: "%i", rating.stars)
         cell.detailTextLabel?.text = rating.player.username
-    }
-}
-
-extension RatingsTableViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        
-        case .insert:
-            if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .automatic)
-            }
-            
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            
-        case .move:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            if let newIndexPath = newIndexPath {
-                tableView.deleteRows(at: [newIndexPath], with: .automatic)
-            }
-            
-        case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
-                configure(cell, at: indexPath)
-            }
-            
-        @unknown default:
-            break
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
 }

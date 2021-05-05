@@ -7,7 +7,7 @@
 import UIKit
 import CoreData
 
-class ChallengesTableViewController: UITableViewController, DataControllerInjectable, PhotoControllerInjectable, UserInjectable {
+class ChallengesTableViewController: FetchedTableViewController, DataControllerInjectable, PhotoControllerInjectable, UserInjectable {
     
     var dataController: DataController!
     var photoController: PhotoController!
@@ -54,7 +54,7 @@ class ChallengesTableViewController: UITableViewController, DataControllerInject
 
     // MARK: - Configure Table View Cell
     
-    private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
+    override func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let challenge = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = challenge.hint
         cell.detailTextLabel?.text = String(format: "(%.5f, %.5f)", challenge.latitude, challenge.longitude)
@@ -86,49 +86,6 @@ class ChallengesTableViewController: UITableViewController, DataControllerInject
             let challenge = fetchedResultsController.object(at: tableView.indexPathForSelectedRow!)
             vc.challenge = challenge
         }
-    }
-
-}
-
-extension ChallengesTableViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        
-        case .insert:
-            if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .automatic)
-            }
-            
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            
-        case .move:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            if let newIndexPath = newIndexPath {
-                tableView.deleteRows(at: [newIndexPath], with: .automatic)
-            }
-            
-        case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
-                configure(cell, at: indexPath)
-            }
-            
-        @unknown default:
-            break
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
 
 }

@@ -6,7 +6,7 @@
 import UIKit
 import CoreData
 
-class DataBrowserTableViewController: UITableViewController, DataControllerInjectable, PhotoControllerInjectable {
+class DataBrowserTableViewController: FetchedTableViewController, DataControllerInjectable, PhotoControllerInjectable {
     
     var dataController: DataController!
     var photoController: PhotoController!
@@ -33,7 +33,7 @@ class DataBrowserTableViewController: UITableViewController, DataControllerInjec
     }
 
     // MARK: - UITableViewDataSource & UITableViewDelegate
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
@@ -51,7 +51,7 @@ class DataBrowserTableViewController: UITableViewController, DataControllerInjec
     
     // MARK: - Configure Table View Cell
     
-    private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
+    override func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let user = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = user.username
         cell.detailTextLabel?.text = user.email
@@ -83,48 +83,5 @@ class DataBrowserTableViewController: UITableViewController, DataControllerInjec
             let user = fetchedResultsController.object(at: tableView.indexPathForSelectedRow!)
             vc.user = user
         }
-    }
-}
-
-extension DataBrowserTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        
-        case .insert:
-            if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .automatic)
-            }
-            
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            
-        case .move:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            if let newIndexPath = newIndexPath {
-                tableView.deleteRows(at: [newIndexPath], with: .automatic)
-            }
-            
-        case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
-                configure(cell, at: indexPath)
-            }
-            
-        @unknown default:
-            break
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
 }
