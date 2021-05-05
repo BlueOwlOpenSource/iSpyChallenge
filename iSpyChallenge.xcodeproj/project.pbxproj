@@ -20,6 +20,9 @@
 		968A15DA264216C10017D10B /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15D9264216C10017D10B /* RatingsTableViewController.swift */; };
 		968A15DD264219800017D10B /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15DC264219800017D10B /* ChallengeTableViewController.swift */; };
 		968A15E0264221100017D10B /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15DF264221100017D10B /* MatchTableViewController.swift */; };
+		968A15E4264227FD0017D10B /* Matches.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968A15E2264227FD0017D10B /* Matches.storyboard */; };
+		968A15E82642284A0017D10B /* Ratings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968A15E72642284A0017D10B /* Ratings.storyboard */; };
+		968A15EC2642285C0017D10B /* Challenges.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968A15EA2642285C0017D10B /* Challenges.storyboard */; };
 		96ABE8022640CFF20045C456 /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8012640CFF20045C456 /* UserResult.swift */; };
 		96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8042640D0500045C456 /* ChallengeResult.swift */; };
 		96ABE8082641CC890045C456 /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */; };
@@ -58,6 +61,9 @@
 		968A15D9264216C10017D10B /* RatingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
 		968A15DC264219800017D10B /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
 		968A15DF264221100017D10B /* MatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
+		968A15E3264227FD0017D10B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "iSpyChallenge/Data Browser/iSpyChallenge/Base.lproj/Matches.storyboard"; sourceTree = "<group>"; };
+		968A15E72642284A0017D10B /* Ratings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ratings.storyboard; sourceTree = "<group>"; };
+		968A15EB2642285C0017D10B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "iSpyChallenge/Data Browser/iSpyChallenge/Base.lproj/Challenges.storyboard"; sourceTree = "<group>"; };
 		96ABE8012640CFF20045C456 /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
 		96ABE8042640D0500045C456 /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
 		96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				E089E98F263A0C8E0054543D /* DataBrowser.storyboard */,
+				968A15E2264227FD0017D10B /* Matches.storyboard */,
+				968A15EA2642285C0017D10B /* Challenges.storyboard */,
+				968A15E72642284A0017D10B /* Ratings.storyboard */,
 				E07E587A263C9EB10026F912 /* DataBrowserTableViewController.swift */,
 				96ABE80A2641E62C0045C456 /* UserTableViewController.swift */,
 				96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */,
@@ -284,7 +293,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9660CD30263B2D1E006B9352 /* moscone-center-west.jpg in Resources */,
+				968A15E82642284A0017D10B /* Ratings.storyboard in Resources */,
 				9660CD2F263B2D1E006B9352 /* transamerica_pyramid.jpg in Resources */,
+				968A15E4264227FD0017D10B /* Matches.storyboard in Resources */,
+				968A15EC2642285C0017D10B /* Challenges.storyboard in Resources */,
 				9660CD36263B2D1E006B9352 /* coit-tower.jpg in Resources */,
 				9660CD31263B2D1E006B9352 /* alcatraz-island.jpg in Resources */,
 				E089E98C263A0C630054543D /* NearMe.storyboard in Resources */,
@@ -334,6 +346,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		968A15E2264227FD0017D10B /* Matches.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				968A15E3264227FD0017D10B /* Base */,
+			);
+			name = Matches.storyboard;
+			sourceTree = "<group>";
+		};
+		968A15EA2642285C0017D10B /* Challenges.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				968A15EB2642285C0017D10B /* Base */,
+			);
+			name = Challenges.storyboard;
+			sourceTree = "<group>";
+		};
 		E002878D263A06EC00C65841 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

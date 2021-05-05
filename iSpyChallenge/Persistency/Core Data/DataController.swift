@@ -156,7 +156,7 @@ class DataController: NSObject {
                     challenge.creator = randomUser
                     
                     if let rating = NSEntityDescription.insertNewObject(forEntityName: "Rating", into: moc) as? Rating {
-                        rating.stars = Int.random(in: 0..<5)
+                        rating.stars = Int.random(in: 1..<5)
                         rating.challenge = challenge
                         rating.player = randomUser
                     }
