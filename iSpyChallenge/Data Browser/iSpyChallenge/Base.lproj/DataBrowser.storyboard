@@ -56,7 +56,7 @@
             </objects>
             <point key="canvasLocation" x="1546" y="1676"/>
         </scene>
-        <!--Challenges Table View Controller-->
+        <!--Challenges-->
         <scene sceneID="w9s-lt-SpA">
             <objects>
                 <tableViewController id="Hsv-td-tAf" customClass="ChallengesTableViewController" customModule="iSpyChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,7 +95,7 @@
                             <outlet property="delegate" destination="Hsv-td-tAf" id="vbl-0Y-Zo8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Yzt-dD-ltf"/>
+                    <navigationItem key="navigationItem" title="Challenges" id="Yzt-dD-ltf"/>
                     <connections>
                         <segue destination="Wxg-Ze-Vw9" kind="show" identifier="ShowChallenge" id="WH4-xY-3Di"/>
                     </connections>
@@ -104,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="3321" y="892"/>
         </scene>
-        <!--User Table View Controller-->
+        <!--User-->
         <scene sceneID="jCm-z9-Ybu">
             <objects>
                 <tableViewController id="vcX-YF-iyG" customClass="UserTableViewController" customModule="iSpyChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,7 +143,7 @@
                             <outlet property="delegate" destination="vcX-YF-iyG" id="Xjd-dU-SC7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Hcr-hM-cTM"/>
+                    <navigationItem key="navigationItem" title="User" id="Hcr-hM-cTM"/>
                     <connections>
                         <segue destination="Hsv-td-tAf" kind="show" identifier="ShowChallenges" id="UiV-NT-UmE"/>
                         <segue destination="HEw-jF-rlP" kind="show" identifier="ShowMatches" id="tc0-7R-MLl"/>
@@ -152,9 +152,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyF-f7-blR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2270" y="1675"/>
+            <point key="canvasLocation" x="2298" y="1675"/>
         </scene>
-        <!--Matches Table View Controller-->
+        <!--Matches-->
         <scene sceneID="RQu-iY-Dyd">
             <objects>
                 <tableViewController id="HEw-jF-rlP" customClass="MatchesTableViewController" customModule="iSpyChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,7 +193,7 @@
                             <outlet property="delegate" destination="HEw-jF-rlP" id="k5F-2C-KYy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="OJc-NA-vQd"/>
+                    <navigationItem key="navigationItem" title="Matches" id="OJc-NA-vQd"/>
                     <connections>
                         <segue destination="ssV-6a-d8K" kind="show" identifier="ShowMatch" id="cwW-Y1-afF"/>
                     </connections>
@@ -202,7 +202,7 @@
             </objects>
             <point key="canvasLocation" x="3494" y="1675"/>
         </scene>
-        <!--Ratings Table View Controller-->
+        <!--Ratings-->
         <scene sceneID="UAA-AQ-43F">
             <objects>
                 <tableViewController id="AiX-WX-Bwc" customClass="RatingsTableViewController" customModule="iSpyChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -241,13 +241,13 @@
                             <outlet property="delegate" destination="AiX-WX-Bwc" id="hix-gA-t4n"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="i5w-5M-e1L"/>
+                    <navigationItem key="navigationItem" title="Ratings" id="i5w-5M-e1L"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9K-gD-QXW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3322" y="2528"/>
         </scene>
-        <!--Challenge Table View Controller-->
+        <!--Challenge-->
         <scene sceneID="DdR-yp-CrH">
             <objects>
                 <tableViewController id="Wxg-Ze-Vw9" customClass="ChallengeTableViewController" customModule="iSpyChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -286,7 +286,7 @@
                             <outlet property="delegate" destination="Wxg-Ze-Vw9" id="4q7-X0-zpQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ubZ-jB-uFv"/>
+                    <navigationItem key="navigationItem" title="Challenge" id="ubZ-jB-uFv"/>
                     <connections>
                         <segue destination="vcX-YF-iyG" kind="show" identifier="ShowUser" id="p2X-Rc-WQd"/>
                         <segue destination="HEw-jF-rlP" kind="show" identifier="ShowMatches" id="MXg-Ej-S6r"/>
@@ -297,7 +297,7 @@
             </objects>
             <point key="canvasLocation" x="4623" y="892"/>
         </scene>
-        <!--Match Table View Controller-->
+        <!--Match-->
         <scene sceneID="CUF-rL-Pg5">
             <objects>
                 <tableViewController id="ssV-6a-d8K" customClass="MatchTableViewController" customModule="iSpyChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -336,7 +336,7 @@
                             <outlet property="delegate" destination="ssV-6a-d8K" id="nzl-BR-lXg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="32A-lB-lXe"/>
+                    <navigationItem key="navigationItem" title="Match" id="32A-lB-lXe"/>
                     <connections>
                         <segue destination="Wxg-Ze-Vw9" kind="show" identifier="ShowChallenge" id="m61-bR-w2F"/>
                         <segue destination="vcX-YF-iyG" kind="show" identifier="ShowPlayer" id="IPt-5v-6fg"/>
@@ -348,10 +348,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="m61-bR-w2F"/>
+        <segue reference="WH4-xY-3Di"/>
         <segue reference="dHX-Ud-92a"/>
         <segue reference="MXg-Ej-S6r"/>
-        <segue reference="IPt-5v-6fg"/>
+        <segue reference="p2X-Rc-WQd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
