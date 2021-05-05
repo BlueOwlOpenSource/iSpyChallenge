@@ -6,6 +6,10 @@
 import UIKit
 import CoreData
 
+protocol ChallengeInjectable: AnyObject {
+    var challenge: Challenge? { get set }
+}
+
 class Challenge: NSManagedObject, ManagedObjectType {
 
     static var entityName = "Challenge"

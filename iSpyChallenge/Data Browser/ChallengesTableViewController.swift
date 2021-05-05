@@ -7,15 +7,15 @@
 import UIKit
 import CoreData
 
-class ChallengesTableViewController: UITableViewController, DataControllerInjectable, PhotoControllerInjectable {
+class ChallengesTableViewController: UITableViewController, DataControllerInjectable, PhotoControllerInjectable, UserInjectable {
     
     var dataController: DataController!
     var photoController: PhotoController!
-    var user: User!
+    var user: User?
     
     private lazy var fetchedResultsController: NSFetchedResultsController<Challenge> = {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.newFetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "creator = %@", self.user)
+        fetchRequest.predicate = NSPredicate(format: "creator = %@", self.user!)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "hint", ascending: true)]
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.mainQueueManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         controller.delegate = self
@@ -48,6 +48,7 @@ class ChallengesTableViewController: UITableViewController, DataControllerInject
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowChallenge", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -56,11 +57,34 @@ class ChallengesTableViewController: UITableViewController, DataControllerInject
     private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let challenge = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = challenge.hint
-        cell.detailTextLabel?.text = String(format: "(%.3f, %.3f)", challenge.latitude, challenge.longitude)
+        cell.detailTextLabel?.text = String(format: "(%.5f, %.5f)", challenge.latitude, challenge.longitude)
         if let thumbnail = photoController.photo(withName: challenge.photoHref) {
             cell.imageView?.image = thumbnail
         } else {
             cell.imageView?.image = nil
+        }
+    }
+
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        injectProperties(viewController: segue.destination)
+    }
+    
+    // MARK: - Injection
+    
+    func injectProperties(viewController: UIViewController) {
+        if let vc = viewController as? DataControllerInjectable {
+            vc.dataController = self.dataController
+        }
+        
+        if let vc = viewController as? PhotoControllerInjectable {
+            vc.photoController = self.photoController
+        }
+        
+        if let vc = viewController as? ChallengeInjectable {
+            let challenge = fetchedResultsController.object(at: tableView.indexPathForSelectedRow!)
+            vc.challenge = challenge
         }
     }
 

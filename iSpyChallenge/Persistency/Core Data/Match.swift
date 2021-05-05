@@ -6,6 +6,10 @@
 import UIKit
 import CoreData
 
+protocol MatchInjectable: AnyObject {
+    var match: Match? { get set }
+}
+
 class Match: NSManagedObject, ManagedObjectType {
     
     static var entityName = "Match"

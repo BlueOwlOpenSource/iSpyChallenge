@@ -6,6 +6,10 @@
 import UIKit
 import CoreData
 
+protocol UserInjectable: AnyObject {
+    var user: User? { get set }
+}
+
 class User: NSManagedObject, ManagedObjectType {
     
     static var entityName = "User"

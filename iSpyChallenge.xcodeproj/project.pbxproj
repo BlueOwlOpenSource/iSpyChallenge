@@ -17,6 +17,9 @@
 		9660CD35263B2D1E006B9352 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2D263B2D1E006B9352 /* users.json */; };
 		9660CD36263B2D1E006B9352 /* coit-tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9660CD2E263B2D1E006B9352 /* coit-tower.jpg */; };
 		968A15D72642152A0017D10B /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15D62642152A0017D10B /* MatchesTableViewController.swift */; };
+		968A15DA264216C10017D10B /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15D9264216C10017D10B /* RatingsTableViewController.swift */; };
+		968A15DD264219800017D10B /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15DC264219800017D10B /* ChallengeTableViewController.swift */; };
+		968A15E0264221100017D10B /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A15DF264221100017D10B /* MatchTableViewController.swift */; };
 		96ABE8022640CFF20045C456 /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8012640CFF20045C456 /* UserResult.swift */; };
 		96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8042640D0500045C456 /* ChallengeResult.swift */; };
 		96ABE8082641CC890045C456 /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */; };
@@ -52,6 +55,9 @@
 		9660CD2D263B2D1E006B9352 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		9660CD2E263B2D1E006B9352 /* coit-tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coit-tower.jpg"; sourceTree = "<group>"; };
 		968A15D62642152A0017D10B /* MatchesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
+		968A15D9264216C10017D10B /* RatingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
+		968A15DC264219800017D10B /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
+		968A15DF264221100017D10B /* MatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
 		96ABE8012640CFF20045C456 /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
 		96ABE8042640D0500045C456 /* ChallengeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResult.swift; sourceTree = "<group>"; };
 		96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +196,10 @@
 				E07E587A263C9EB10026F912 /* DataBrowserTableViewController.swift */,
 				96ABE80A2641E62C0045C456 /* UserTableViewController.swift */,
 				96ABE8072641CC890045C456 /* ChallengesTableViewController.swift */,
+				968A15DC264219800017D10B /* ChallengeTableViewController.swift */,
 				968A15D62642152A0017D10B /* MatchesTableViewController.swift */,
+				968A15DF264221100017D10B /* MatchTableViewController.swift */,
+				968A15D9264216C10017D10B /* RatingsTableViewController.swift */,
 			);
 			path = "Data Browser";
 			sourceTree = "<group>";
@@ -311,11 +320,14 @@
 				E07E587F263CAA760026F912 /* UIViewController+iSpy.swift in Sources */,
 				E089E9AF263A1C710054543D /* DataController.swift in Sources */,
 				E089E9A8263A18DA0054543D /* Rating.swift in Sources */,
+				968A15DA264216C10017D10B /* RatingsTableViewController.swift in Sources */,
 				E089E980263A0A0F0054543D /* iSpyTabBarController.swift in Sources */,
 				E089E997263A0DCA0054543D /* iSpy.xcdatamodeld in Sources */,
 				96ABE8052640D0500045C456 /* ChallengeResult.swift in Sources */,
 				96ABE80B2641E62C0045C456 /* UserTableViewController.swift in Sources */,
 				E002878A263A06EC00C65841 /* SceneDelegate.swift in Sources */,
+				968A15E0264221100017D10B /* MatchTableViewController.swift in Sources */,
+				968A15DD264219800017D10B /* ChallengeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
