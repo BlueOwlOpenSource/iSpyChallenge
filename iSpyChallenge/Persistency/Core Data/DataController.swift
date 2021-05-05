@@ -136,9 +136,7 @@ extension DataController {
         let photoController = try? PhotoController()
         photoController?.removeAllPhotos()
         
-        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        moc.parent = mainQueueManagedObjectContext
-        
+        let moc = mainQueueManagedObjectContext
         moc.performAndWait {
             for result in getUserResult() {
                 if let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as? User {
@@ -220,7 +218,6 @@ extension DataController {
         catch {
             print(error.localizedDescription)
         }
-
     }
     
     func getUserResult() -> [UserResult] {
