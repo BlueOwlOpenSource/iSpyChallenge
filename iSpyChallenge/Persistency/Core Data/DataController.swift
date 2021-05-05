@@ -37,7 +37,9 @@ class DataController: NSObject {
                 
         super.init()
         
-        populateWithSampleData()
+        if shouldPopulateSampleData() {
+            populateWithSampleData()
+        }
     }
     
     // MARK: - Private State
@@ -50,6 +52,10 @@ class DataController: NSObject {
         let url = bundle.url(forResource: moduleName, withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: url)!
     }()
+    
+    private var persistentStoreURL: URL {
+        return applicationsDocumentsDirectory.appendingPathComponent("\(moduleName).sqlite")
+    }
     
     private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         
@@ -64,7 +70,6 @@ class DataController: NSObject {
         
         } else if storeType == NSSQLiteStoreType {
             do {
-                let persistentStoreURL = applicationsDocumentsDirectory.appendingPathComponent("\(moduleName).sqlite")
                 let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
                 try coordinator.addPersistentStore(ofType: storeType, configurationName: nil, at: persistentStoreURL, options: options)
             } catch {
@@ -112,8 +117,20 @@ class DataController: NSObject {
             }
         }
     }
+        
+    // MARK: - Deallocation
     
-    // MARK: - Sample Data
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: - Sample Data
+
+extension DataController {
+    func shouldPopulateSampleData() -> Bool {
+        return !FileManager.default.fileExists(atPath: persistentStoreURL.path)
+    }
     
     func populateWithSampleData() {
         let photoController = try? PhotoController()
@@ -123,7 +140,7 @@ class DataController: NSObject {
         moc.parent = mainQueueManagedObjectContext
         
         moc.performAndWait {
-            for result in userResult {
+            for result in getUserResult() {
                 if let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as? User {
                     
                     user.email = result.email
@@ -142,7 +159,7 @@ class DataController: NSObject {
             let request = User.newFetchRequest()
             let users = try! moc.fetch(request)
 
-            for result in challengeResult {
+            for result in getChallengeResult() {
                 let photo = UIImage(named: result.photo)!
                 photoController?.addPhoto(withName: result.photo, image: photo)
                 
@@ -206,7 +223,7 @@ class DataController: NSObject {
 
     }
     
-    var userResult: [UserResult] {
+    func getUserResult() -> [UserResult] {
         guard let url = Bundle.main.url(forResource: "users", withExtension: "json") else { return [] }
         guard let users = try? Data(contentsOf: url) else { return [] }
         
@@ -214,17 +231,12 @@ class DataController: NSObject {
         return userResult?.results ?? []
     }
     
-    var challengeResult: [ChallengeResult] {
+    func getChallengeResult() -> [ChallengeResult] {
         guard let url = Bundle.main.url(forResource: "challenges", withExtension: "json") else { return [] }
         guard let challenges = try? Data(contentsOf: url) else { return [] }
         
         let challengeResult = try? JSONDecoder().decode(ChallengesResult.self, from: challenges)
         return challengeResult?.challenges  ?? []
     }
-    
-    // MARK: - Deallocation
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+
 }
