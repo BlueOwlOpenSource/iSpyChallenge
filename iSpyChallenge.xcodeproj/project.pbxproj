@@ -49,7 +49,6 @@
 		E0028791263A06EC00C65841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0028790263A06EC00C65841 /* Assets.xcassets */; };
 		E0028794263A06EC00C65841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0028792263A06EC00C65841 /* LaunchScreen.storyboard */; };
 		E07E587B263C9EB10026F912 /* DataBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E587A263C9EB10026F912 /* DataBrowserTableViewController.swift */; };
-		E07E58852641E4310026F912 /* iSpy App - Code Challenge.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E07E58832641E4310026F912 /* iSpy App - Code Challenge.pdf */; };
 		E07E58862641E4310026F912 /* ReadMe.md in Resources */ = {isa = PBXBuildFile; fileRef = E07E58842641E4310026F912 /* ReadMe.md */; };
 		E07E588B2641E6F20026F912 /* NewChallenge.png in Resources */ = {isa = PBXBuildFile; fileRef = E07E58892641E6F20026F912 /* NewChallenge.png */; };
 		E07E588C2641E6F20026F912 /* NearMe.png in Resources */ = {isa = PBXBuildFile; fileRef = E07E588A2641E6F20026F912 /* NearMe.png */; };
@@ -104,7 +103,6 @@
 		E0028793263A06EC00C65841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0028795263A06EC00C65841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E07E587A263C9EB10026F912 /* DataBrowserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBrowserTableViewController.swift; sourceTree = "<group>"; };
-		E07E58832641E4310026F912 /* iSpy App - Code Challenge.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iSpy App - Code Challenge.pdf"; sourceTree = "<group>"; };
 		E07E58842641E4310026F912 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		E07E58892641E6F20026F912 /* NewChallenge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewChallenge.png; sourceTree = "<group>"; };
 		E07E588A2641E6F20026F912 /* NearMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NearMe.png; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				E07E58842641E4310026F912 /* ReadMe.md */,
 				E07E588A2641E6F20026F912 /* NearMe.png */,
 				E07E58892641E6F20026F912 /* NewChallenge.png */,
-				E07E58832641E4310026F912 /* iSpy App - Code Challenge.pdf */,
 				9660CD26263B2D0A006B9352 /* iSpySampleData */,
 				E0028786263A06EC00C65841 /* iSpyChallenge */,
 				E0028785263A06EC00C65841 /* Products */,
@@ -344,7 +341,6 @@
 				E0028791263A06EC00C65841 /* Assets.xcassets in Resources */,
 				E002878F263A06EC00C65841 /* Main.storyboard in Resources */,
 				9660CD33263B2D1E006B9352 /* galvanize.jpg in Resources */,
-				E07E58852641E4310026F912 /* iSpy App - Code Challenge.pdf in Resources */,
 				E089E988263A0C480054543D /* NewChallenge.storyboard in Resources */,
 				E07E588B2641E6F20026F912 /* NewChallenge.png in Resources */,
 				E089E991263A0C8E0054543D /* DataBrowser.storyboard in Resources */,
