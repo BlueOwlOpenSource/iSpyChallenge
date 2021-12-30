@@ -1,40 +1,280 @@
-{
-  "challenges": [
+[
     {
-      "photo": "alcatraz-island.jpg",
-      "hint": "Discovered by Juan Manuel de Ayala in 1775, this San Francisco Bay landmark was once occupied by Native Americans to protest federal policies related to American Indians.",
-      "latitude": 37.82672,
-      "longitude": -122.42106  
+        "id": "0",
+        "photo": "alcatraz-island.jpg",
+        "hint": "Discovered by Juan Manuel de Ayala in 1775, this San Francisco Bay landmark was once occupied by Native Americans to protest federal policies related to American Indians.",
+        "user": "0",
+        "location": {
+            "latitude": 37.82672,
+            "longitude": -122.42106
+        },
+        "matches": [
+            {
+                "id": "0",
+                "location": {
+                    "latitude": 37.16837,
+                    "longitude": -121.44833
+                },
+                "photo": "transamerica_pyramid.jpg",
+                "verified": false,
+                "user": "1"
+            },
+            {
+                "id": "1",
+                "location": {
+                    "latitude": 37.26864,
+                    "longitude": -122.12378
+                },
+                "photo": "alcatraz-island.jpg",
+                "verified": true,
+                "user": "2"
+            }
+        ],
+        "ratings": [
+            {
+                "id": "0",
+                "value": 3,
+                "user": "3"
+            },
+            {
+                "id": "1",
+                "value": 5,
+                "user": "2"
+            },
+            {
+                "id": "2",
+                "value": 2,
+                "user": "1"
+            }
+        ]
     },
     {
-      "photo": "transamerica_pyramid.jpg",
-      "hint": "This iconic structure marks the location of the historic whaling vessel Nianic, an artifact of the 1849 California Gold Rush.",
-      "latitude": 37.79516,
-      "longitude": -122.40273
+        "id": "1",
+        "photo": "transamerica_pyramid.jpg",
+        "hint": "This iconic structure marks the location of the historic whaling vessel Nianic, an artifact of the 1849 California Gold Rush.",
+        "user": "2",
+        "location": {
+            "latitude": 37.79516,
+            "longitude": -122.40273
+        },
+        "matches": [
+            {
+                "id": "2",
+                "location": {
+                    "latitude": 37.55687,
+                    "longitude": -122.15863
+                },
+                "photo": "transamerica_pyramid.jpg",
+                "verified": true,
+                "user": "0"
+            },
+            {
+                "id": "3",
+                "location": {
+                    "latitude": 37.12345,
+                    "longitude": -122.98765
+                },
+                "photo": "transamerica_pyramid.jpg",
+                "verified": true,
+                "user": "1"
+            },
+            {
+                "id": "4",
+                "location": {
+                    "latitude": 37.15673,
+                    "longitude": -122.38469
+                },
+                "photo": "alcatraz-island.jpg",
+                "verified": false,
+                "user": "3"
+            },
+            {
+                "id": "5",
+                "location": {
+                    "latitude": 37.1862,
+                    "longitude": -122.15984
+                },
+                "photo": "transbay-terminal.jpg",
+                "verified": false,
+                "user": "0"
+            }
+        ],
+        "ratings": [
+            {
+                "id": "3",
+                "value": 4,
+                "user": "1"
+            },
+            {
+                "id": "4",
+                "value": 4,
+                "user": "0"
+            }
+        ]
     },
     {
-      "photo": "moscone-center-west.jpg",
-      "hint": "Many a developer has slept all night on the streets surrounding this three-level exhibition hall.",
-      "latitude": 37.78309,
-      "longitude": -122.40401
+        "id": "2",
+        "photo": "moscone-center-west.jpg",
+        "hint": "Many a developer has slept all night on the streets surrounding this three-level exhibition hall.",
+        "user": "3",
+        "location": {
+            "latitude": 37.78309,
+            "longitude": -122.40401
+        },
+        "matches": [],
+        "ratings": [
+            {
+                "id": "5",
+                "value": 3,
+                "user": "2"
+            },
+            {
+                "id": "6",
+                "value": 4,
+                "user": "0"
+            }
+        ]
     },
     {
-      "photo": "transbay-terminal.jpg",
-      "hint": "This historic landmark opened in 1939 and closed in 2010. Riders on Golden Gate Transit, AC Transit, SamTrans, Greyhound and Amtrak passed through this location on their way to surrounding communities of the Bay Area.",
-      "latitude": 37.78994,
-      "longitude": -122.39339
+        "id": "3",
+        "photo": "transbay-terminal.jpg",
+        "hint": "This historic landmark opened in 1939 and closed in 2010. Riders on Golden Gate Transit, AC Transit, SamTrans, Greyhound and Amtrak passed through this location on their way to surrounding communities of the Bay Area.",
+        "user": "3",
+        "location": {
+            "latitude": 37.78994,
+            "longitude": -122.39339
+        },
+        "matches": [
+            {
+                "id": "6",
+                "location": {
+                    "latitude": 37.68434,
+                    "longitude": -122.48978
+                },
+                "photo": "transbay-terminal.jpg",
+                "verified": true,
+                "user": "2"
+            },
+            {
+                "id": "7",
+                "location": {
+                    "latitude": 37.41598,
+                    "longitude": -122.35847
+                },
+                "photo": "transbay-terminal.jpg",
+                "verified": true,
+                "user": "0"
+            }
+        ],
+        "ratings": [
+            {
+                "id": "7",
+                "value": 3,
+                "user": "2"
+            },
+            {
+                "id": "8",
+                "value": 4,
+                "user": "0"
+            },
+            {
+                "id": "10",
+                "value": 5,
+                "user": "1"
+            }
+        ]
     },
     {
-      "photo": "galvanize.jpg",
-      "hint": "The Front Door of the Tech Industry; five floors of creators, innovators, and passionate learners. This campus is full of energy, intelligence, and motivation.",
-      "latitude": 37.78744,
-      "longitude": -122.39648
+        "id": "4",
+        "photo": "galvanize.jpg",
+        "hint": "The Front Door of the Tech Industry; five floors of creators, innovators, and passionate learners. This campus is full of energy, intelligence, and motivation.",
+        "user": "2",
+        "location": {
+            "latitude": 37.78744,
+            "longitude": -122.39648
+        },
+        "matches": [
+            {
+                "id": "8",
+                "location": {
+                    "latitude": 37.49683,
+                    "longitude": -122.19376
+                },
+                "photo": "coit-tower.jpg",
+                "verified": false,
+                "user": "0"
+            }
+        ],
+        "ratings": [
+            {
+                "id": "11",
+                "value": 2,
+                "user": "0"
+            }
+        ]
     },
     {
-      "photo": "coit-tower.jpg",
-      "hint": "Spectacular panoramic views of San Francisco including \"crooked\" Lombard Street, Nob Hill, Russian Hill, Twin Peaks, Aquatic Park, Pier 39, the Financial District, the Ferry Building, as well as San Francisco Bay itself including Angel Island, Alcatraz, Treasure Island, and the Golden Gate and Bay Bridges can be seen from here.  Some say it’s shape resembles a fire hose!",
-      "latitude": 37.80269,
-      "longitude": -122.40584
+        "id": "5",
+        "photo": "coit-tower.jpg",
+        "hint": "Spectacular panoramic views of San Francisco including \"crooked\" Lombard Street, Nob Hill, Russian Hill, Twin Peaks, Aquatic Park, Pier 39, the Financial District, the Ferry Building, as well as San Francisco Bay itself including Angel Island, Alcatraz, Treasure Island, and the Golden Gate and Bay Bridges can be seen from here.  Some say it’s shape resembles a fire hose!",
+        "user": "1",
+        "location": {
+            "latitude": 37.80269,
+            "longitude": -122.40584
+        },
+        "matches": [
+            {
+                "id": "9",
+                "location": {
+                    "latitude": 37.12589,
+                    "longitude": -122.84385
+                },
+                "photo": "galvanize.jpg",
+                "verified": false,
+                "user": "2"
+            },
+            {
+                "id": "10",
+                "location": {
+                    "latitude": 37.14897,
+                    "longitude": -122.44899
+                },
+                "photo": "coit-tower.jpg",
+                "verified": true,
+                "user": "0"
+            },
+            {
+                "id": "11",
+                "location": {
+                    "latitude": 37.15987,
+                    "longitude": -122.32654
+                },
+                "photo": "transamerica_pyramid.jpg",
+                "verified": false,
+                "user": "0"
+            },
+            {
+                "id": "12",
+                "location": {
+                    "latitude": 37.18883,
+                    "longitude": -122.55554
+                },
+                "photo": "coit-tower.jpg",
+                "verified": true,
+                "user": "3"
+            }
+        ],
+        "ratings": [
+            {
+                "id": "12",
+                "value": 5,
+                "user": "0"
+            },
+            {
+                "id": "13",
+                "value": 5,
+                "user": "2"
+            }
+        ]
     }
-  ]
-}
+]

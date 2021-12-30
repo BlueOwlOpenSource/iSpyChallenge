@@ -8,7 +8,7 @@ import UIKit
 import CoreData
 
 class ChallengesTableViewController: UITableViewController {
-    var photoController: PhotoController!
+    var dataController: DataController!
     var challenges: [Challenge] = []
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -23,7 +23,7 @@ class ChallengesTableViewController: UITableViewController {
         if let challenge = challenges[safe: indexPath.row] {
             cell.textLabel?.text = challenge.hint
             cell.detailTextLabel?.text = String(format: "(%.5f, %.5f)", challenge.latitude, challenge.longitude)
-            cell.imageView?.image = photoController.photo(withName: challenge.photoHref)
+            cell.imageView?.image = UIImage(named: challenge.photoImageName)
         }
         
         return cell
@@ -44,7 +44,7 @@ class ChallengesTableViewController: UITableViewController {
     
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? ChallengeTableViewController {
-            vc.photoController = photoController
+            vc.dataController = dataController
             vc.challenge = challenges[safe: tableView.indexPathForSelectedRow?.row]
         }
     }

@@ -42,7 +42,7 @@ struct ChallengeViewModel {
             ChallengeRow(type: .hint, title: challenge?.hint, detail: "hint"),
             ChallengeRow(type: .latitude, title: String(format: "%.5f", challenge!.latitude), detail: "latitude"),
             ChallengeRow(type: .longitude, title: String(format: "%.5f", challenge!.longitude), detail: "longitude"),
-            ChallengeRow(type: .photoHref, title: challenge?.photoHref, detail: "photoHref")
+            ChallengeRow(type: .photoHref, title: challenge?.photoImageName, detail: "photoHref")
         ])
         
         let relationshipSection = ChallengeSection(type: .relationships, rows: [
@@ -56,7 +56,7 @@ struct ChallengeViewModel {
 }
 
 class ChallengeTableViewController: UITableViewController {
-    var photoController: PhotoController!
+    var dataController: DataController!
     var challenge: Challenge?
     var viewModel: ChallengeViewModel?
 
@@ -127,17 +127,22 @@ class ChallengeTableViewController: UITableViewController {
     
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? UserTableViewController {
-            vc.photoController = photoController
-            vc.user = self.challenge?.creator
+            vc.dataController = dataController
+            
+            if let challenge = challenge {
+                vc.user = dataController.user(identifiedBy: challenge.creatorID)
+            }
         }
         
         if let vc = viewController as? MatchesTableViewController {
-            vc.photoController = photoController
-            vc.matches = challenge?.matches.sorted(by: { !$0.verified || $1.verified }) ?? []
+            vc.dataController = dataController
+            vc.matches = challenge?.matches ?? []
         }
         
         if let vc = viewController as? RatingsTableViewController {
-            vc.ratings = challenge?.ratings.sorted(by: { $0.stars < $1.stars }) ?? []
+            if let challenge = challenge {
+                vc.ratingsAndAssociatedUsers = dataController.ratingsAndAssociatedUsers(for: challenge.ratings)
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ import UIKit
 import CoreData
 
 class DataBrowserTableViewController: UITableViewController {
-    var photoController: PhotoController!
+    var dataController: DataController!
     var users: [User] = []
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -22,13 +22,7 @@ class DataBrowserTableViewController: UITableViewController {
         if let user = users[safe: indexPath.row] {
             cell.textLabel?.text = user.username
             cell.detailTextLabel?.text = user.email
-            
-            if let thumbnailURL = URL(string: user.avatarThumbnailHref),
-               let data = (try? Data(contentsOf: thumbnailURL)) ?? nil {
-                cell.imageView?.image = UIImage(data: data)
-            } else {
-                cell.imageView?.image = nil
-            }
+            cell.imageView?.image = user.avatarLargeURL?.loadedIntoImage
         }
         
         return cell
@@ -49,7 +43,7 @@ class DataBrowserTableViewController: UITableViewController {
     
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? UserTableViewController {
-            vc.photoController = photoController
+            vc.dataController = dataController
             vc.user = users[safe: tableView.indexPathForSelectedRow?.row]
         }
     }

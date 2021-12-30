@@ -1,68 +1,42 @@
-{
-  "results": [
+[
     {
-      "email": "susanna.jones@example.com",
-      "login": {
+        "id": "0",
+        "email": "susanna.jones@example.com",
         "username": "silverwolf983",
-        "password": "slammer",
-        "salt": "Cbpk8iUA",
-        "md5": "05e1de8c428c4738e78aee2ebfbffd27",
-        "sha1": "411e7d9e4166b429499683ab1c388e39262459df",
-        "sha256": "1267b409ed80a917471a26a6c21af7203526ad550d28ef481ed52f1f9384466d"
-      },
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/18.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/18.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/18.jpg"
-      }
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/women/18.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/women/18.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/18.jpg"
+        }
     },
     {
-      "email": "kirk.kuhn@example.com",
-      "login": {
+        "id": "1",
+        "email": "kirk.kuhn@example.com",
         "username": "redgorilla529",
-        "password": "christia",
-        "salt": "NhTzgdiC",
-        "md5": "dec8b5a46b739c1462cfae5c692ddd09",
-        "sha1": "80ce1a9025acfbbf2fc00a54f65442248480201f",
-        "sha256": "40d4a3e674f09f87a8dd6891e091e63b7cfc3d86563e3f69843af17763390f67"
-      },
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/56.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
-      }
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/men/56.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
+        }
     },
     {
-      "email": "david.macrae@example.com",
-      "login": {
+        "id": "2",
+        "email": "david.macrae@example.com",
         "username": "goldenbutterfly588",
-        "password": "redeye",
-        "salt": "56KCnhD6",
-        "md5": "a8c56290ec65d2552742947bcd46d205",
-        "sha1": "efcdab52968a7ecc721d8a73fa9da9e5bf2f7651",
-        "sha256": "52f7da4757483d14d6fdc7dc91db01909cbeb768d30858fe1b60ae23a2e03963"
-      },
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/91.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/91.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/91.jpg"
-      }
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/men/91.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/men/91.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/91.jpg"
+        }
     },
     {
-      "email": "tyler.green@example.com",
-      "login": {
+        "id": "3",
+        "email": "tyler.green@example.com",
         "username": "crazyrabbit390",
-        "password": "poochie",
-        "salt": "r90WtZ48",
-        "md5": "0401b401c15a9e1addd560ca347916ff",
-        "sha1": "d6566c559e7853fa0148514f934438ea91d4b379",
-        "sha256": "62372862312848cf7c49c9914b8cd0f0696caf6c79a2e87729f952fc3aeb5a1f"
-      },
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/97.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/97.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/97.jpg"
-      }
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/men/97.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/men/97.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/97.jpg"
+        }
     }
-  ]
-}
+]

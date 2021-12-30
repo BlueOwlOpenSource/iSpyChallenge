@@ -19,7 +19,7 @@ enum MatchRowType: String {
     case photoHref
     case verified
     case challenge
-    case player
+    case user
 }
 
 struct MatchRow {
@@ -40,13 +40,13 @@ struct MatchViewModel {
         let attributeSection = MatchSection(type: .attributes, rows: [
             MatchRow(type: .latitude, title: String(format: "%.5f", match!.latitude), detail: "latitude"),
             MatchRow(type: .longitude, title: String(format: "%.5f", match!.longitude), detail: "longitude"),
-            MatchRow(type: .photoHref, title: match?.photoHref, detail: "photoHref"),
+            MatchRow(type: .photoHref, title: match!.photoImageName, detail: "photoHref"),
             MatchRow(type: .verified, title: match!.verified ? "True" : "False", detail: "verified")
         ])
         
         let relationshipSection = MatchSection(type: .relationships, rows: [
             MatchRow(type: .challenge, title: "Challenge", detail: nil),
-            MatchRow(type: .player, title: "Player", detail: nil)
+            MatchRow(type: .user, title: "User", detail: nil)
         ])
         
         self.sections = [attributeSection, relationshipSection]
@@ -54,7 +54,7 @@ struct MatchViewModel {
 }
 
 class MatchTableViewController: UITableViewController {
-    var photoController: PhotoController!
+    var dataController: DataController!
     var match: Match?
     var viewModel: MatchViewModel?
     
@@ -105,8 +105,8 @@ class MatchTableViewController: UITableViewController {
         switch row?.type {
         case .challenge:
             performSegue(withIdentifier: "ShowChallenge", sender: self)
-        case .player:
-            performSegue(withIdentifier: "ShowPlayer", sender: self)
+        case .user:
+            performSegue(withIdentifier: "ShowUser", sender: self)
         default:
             break
         }
@@ -123,13 +123,19 @@ class MatchTableViewController: UITableViewController {
     
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? ChallengeTableViewController {
-            vc.photoController = photoController
-            vc.challenge = match?.challenge
+            vc.dataController = dataController
+            
+            if let match = match {
+                vc.challenge = dataController.challenge(for: match)
+            }
         }
         
         if let vc = viewController as? UserTableViewController {
-            vc.photoController = photoController
-            vc.user = match?.player
+            vc.dataController = dataController
+            
+            if let match = match {
+                vc.user = dataController.user(identifiedBy: match.creatorID)
+            }
         }
     }
 }

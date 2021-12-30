@@ -11,6 +11,13 @@ import CoreData
 enum UserSectionType: String {
     case attributes
     case relationships
+    
+    var accessoryType: UITableViewCell.AccessoryType {
+        switch self {
+        case .attributes: return .none
+        case .relationships: return .disclosureIndicator
+        }
+    }
 }
 
 enum UserRowType: String {
@@ -42,9 +49,9 @@ struct UserViewModel {
         let attributeSection = UserSection(type: .attributes, rows: [
             UserRow(type: .username, title: user?.username, detail: "username"),
             UserRow(type: .email, title: user?.email, detail: "email"),
-            UserRow(type: .avatarLargeHref, title: user?.avatarLargeHref, detail: "avatarLargeHref"),
-            UserRow(type: .avatarMediumHref, title: user?.avatarMediumHref, detail: "avatarMediumHref"),
-            UserRow(type: .avatarThumbnailHref, title: user?.avatarThumbnailHref, detail: "avatarThumbnailHref")
+            UserRow(type: .avatarLargeHref, title: user?.avatarLargeURL?.absoluteString, detail: "avatarLargeHref"),
+            UserRow(type: .avatarMediumHref, title: user?.avatarMediumURL?.absoluteString, detail: "avatarMediumHref"),
+            UserRow(type: .avatarThumbnailHref, title: user?.avatarThumbnailURL?.absoluteString, detail: "avatarThumbnailHref")
         ])
         
         let relationshipSection = UserSection(type: .relationships, rows: [
@@ -58,7 +65,7 @@ struct UserViewModel {
 }
 
 class UserTableViewController: UITableViewController {
-    var photoController: PhotoController!
+    var dataController: DataController!
     var user: User?
     var viewModel: UserViewModel?
     
@@ -86,13 +93,7 @@ class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell")!
         cell.textLabel?.text = row?.title
         cell.detailTextLabel?.text = row?.detail
-        
-        if section?.type == .attributes {
-            cell.accessoryType = .none
-        }
-        else {
-            cell.accessoryType = .disclosureIndicator
-        }
+        cell.accessoryType = section?.type.accessoryType ?? .none
         
         return cell
     }
@@ -129,17 +130,23 @@ class UserTableViewController: UITableViewController {
     
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? ChallengesTableViewController {
-            vc.photoController = photoController
-            vc.challenges = user?.challenges.sorted(by: { $0.hint < $1.hint }) ?? []
+            vc.dataController = dataController
+            vc.challenges = user?.challenges ?? []
         }
         
         if let vc = viewController as? MatchesTableViewController {
-            vc.photoController = photoController
-            vc.matches = user?.matches.sorted(by: { !$0.verified || $1.verified }) ?? []
+            vc.dataController = dataController
+            
+            if let user = user {
+                vc.matches = dataController.matches(createdBy: user)
+            }
         }
         
         if let vc = viewController as? RatingsTableViewController {
-            vc.ratings = user?.ratings.sorted(by: { $0.stars < $1.stars }) ?? []
+            if let user = user {
+                let ratings = dataController.ratings(createdBy: user)
+                vc.ratingsAndAssociatedUsers = dataController.ratingsAndAssociatedUsers(for: ratings)
+            }
         }
     }
 }
