@@ -24,15 +24,9 @@ You will have 3 hours to work on the project.
 
 ## Xcode Project Overview
 
-The model objects for the app are provided, along with some sample data for use during the exercise.  All data is maintained in an in-memory persistent store, and is reloaded each time the app is launched.
+The model objects for the app are provided, along with some sample data for use during the exercise.  All data is maintained in memory and is loaded from sample JSON files, via a mock API service, when the app launches.
  
-A helper class called PhotoController is provided to store and retrieve photos from a local directory.  The sample data set includes a number of challenges, each with a photo.
-
-Access to the sample data is provided via the DataController class. Refer to the class header for details of useful methods within the class.  You will need to utilize this class in order to complete the challenge.  The AppDelegate constructs the DataController and passes it into each of the view controllers.
-
-There are four users and six challenges in the sample data set.  The challenges are randomly assigned to users each time the sample data is loaded.
-
-The UI for the project consists of three tabs (New Challenge, Near Me, Data Browser).  The first two are placeholders for your work and the third one provides a means to view the sample data included with the project.
+Access to the sample data is provided via the DataController class.  You will need to utilize this class in order to complete the challenge.  iSpyTabBarController constructs the DataController and passes it into each of its view controllers (currently only DataBrowserViewController).  Additionally, there are convenience functions for navigating DataController's data in DataController+iSpy.swift.
 
 ## Screen Shots
 
