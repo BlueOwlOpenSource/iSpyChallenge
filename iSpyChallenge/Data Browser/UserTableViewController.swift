@@ -65,7 +65,7 @@ struct UserViewModel {
 }
 
 class UserTableViewController: UITableViewController {
-    var dataController: DataController!
+    var dataController: DataController?
     var user: User?
     var viewModel: UserViewModel?
     
@@ -138,14 +138,14 @@ class UserTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let user = user {
-                vc.matches = dataController.matches(createdBy: user)
+                vc.matches = dataController?.matches(createdBy: user) ?? []
             }
         }
         
         if let vc = viewController as? RatingsTableViewController {
             if let user = user {
-                let ratings = dataController.ratings(createdBy: user)
-                vc.ratingsAndAssociatedUsers = dataController.ratingsAndAssociatedUsers(for: ratings)
+                let ratings = dataController?.ratings(createdBy: user) ?? []
+                vc.ratingsAndAssociatedUsers = dataController?.ratingsAndAssociatedUsers(for: ratings) ?? []
             }
         }
     }

@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class MatchesTableViewController: UITableViewController {
-    var dataController: DataController!
+    var dataController: DataController?
     var matches: [Match] = []
     
     // MARK: - UITableViewDataSource & UITableViewDelegate

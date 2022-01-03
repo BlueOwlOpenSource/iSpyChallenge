@@ -54,7 +54,7 @@ struct MatchViewModel {
 }
 
 class MatchTableViewController: UITableViewController {
-    var dataController: DataController!
+    var dataController: DataController?
     var match: Match?
     var viewModel: MatchViewModel?
     
@@ -126,7 +126,7 @@ class MatchTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let match = match {
-                vc.challenge = dataController.challenge(for: match)
+                vc.challenge = dataController?.challenge(for: match)
             }
         }
         
@@ -134,7 +134,7 @@ class MatchTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let match = match {
-                vc.user = dataController.user(identifiedBy: match.creatorID)
+                vc.user = dataController?.user(identifiedBy: match.creatorID)
             }
         }
     }

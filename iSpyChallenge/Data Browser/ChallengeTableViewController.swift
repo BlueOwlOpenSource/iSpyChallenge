@@ -56,7 +56,7 @@ struct ChallengeViewModel {
 }
 
 class ChallengeTableViewController: UITableViewController {
-    var dataController: DataController!
+    var dataController: DataController?
     var challenge: Challenge?
     var viewModel: ChallengeViewModel?
 
@@ -130,7 +130,7 @@ class ChallengeTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let challenge = challenge {
-                vc.user = dataController.user(identifiedBy: challenge.creatorID)
+                vc.user = dataController?.user(identifiedBy: challenge.creatorID)
             }
         }
         
@@ -141,7 +141,7 @@ class ChallengeTableViewController: UITableViewController {
         
         if let vc = viewController as? RatingsTableViewController {
             if let challenge = challenge {
-                vc.ratingsAndAssociatedUsers = dataController.ratingsAndAssociatedUsers(for: challenge.ratings)
+                vc.ratingsAndAssociatedUsers = dataController?.ratingsAndAssociatedUsers(for: challenge.ratings) ?? []
             }
         }
     }

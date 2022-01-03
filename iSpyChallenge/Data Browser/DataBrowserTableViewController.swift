@@ -7,7 +7,7 @@ import UIKit
 import CoreData
 
 class DataBrowserTableViewController: UITableViewController {
-    var dataController: DataController!
+    var dataController: DataController?
     var users: [User] = []
     
     // MARK: - UITableViewDataSource & UITableViewDelegate

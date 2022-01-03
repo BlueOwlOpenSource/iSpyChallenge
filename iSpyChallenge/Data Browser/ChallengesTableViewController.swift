@@ -8,7 +8,7 @@ import UIKit
 import CoreData
 
 class ChallengesTableViewController: UITableViewController {
-    var dataController: DataController!
+    var dataController: DataController?
     var challenges: [Challenge] = []
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
