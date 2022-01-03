@@ -37,12 +37,12 @@ struct ChallengeSection {
 struct ChallengeViewModel {
     let sections: [ChallengeSection]
     
-    init(challenge: Challenge?) {
+    init(challenge: Challenge) {
         let attributeSection = ChallengeSection(type: .attributes, rows: [
-            ChallengeRow(type: .hint, title: challenge?.hint, detail: "hint"),
-            ChallengeRow(type: .latitude, title: String(format: "%.5f", challenge!.latitude), detail: "latitude"),
-            ChallengeRow(type: .longitude, title: String(format: "%.5f", challenge!.longitude), detail: "longitude"),
-            ChallengeRow(type: .photoHref, title: challenge?.photoImageName, detail: "photoHref")
+            ChallengeRow(type: .hint, title: challenge.hint, detail: "hint"),
+            ChallengeRow(type: .latitude, title: String(format: "%.5f", challenge.latitude), detail: "latitude"),
+            ChallengeRow(type: .longitude, title: String(format: "%.5f", challenge.longitude), detail: "longitude"),
+            ChallengeRow(type: .photoHref, title: challenge.photoImageName, detail: "photoHref")
         ])
         
         let relationshipSection = ChallengeSection(type: .relationships, rows: [
@@ -64,7 +64,10 @@ class ChallengeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ChallengeViewModel(challenge: challenge)
+        
+        if let challenge = challenge {
+            viewModel = ChallengeViewModel(challenge: challenge)
+        }
     }
 
     // MARK: - UITableViewDataSource & UITableViewDelegate

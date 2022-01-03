@@ -36,12 +36,12 @@ struct MatchSection {
 struct MatchViewModel {
     let sections: [MatchSection]
     
-    init(match: Match?) {
+    init(match: Match) {
         let attributeSection = MatchSection(type: .attributes, rows: [
-            MatchRow(type: .latitude, title: String(format: "%.5f", match!.latitude), detail: "latitude"),
-            MatchRow(type: .longitude, title: String(format: "%.5f", match!.longitude), detail: "longitude"),
-            MatchRow(type: .photoHref, title: match!.photoImageName, detail: "photoHref"),
-            MatchRow(type: .verified, title: match!.verified ? "True" : "False", detail: "verified")
+            MatchRow(type: .latitude, title: String(format: "%.5f", match.latitude), detail: "latitude"),
+            MatchRow(type: .longitude, title: String(format: "%.5f", match.longitude), detail: "longitude"),
+            MatchRow(type: .photoHref, title: match.photoImageName, detail: "photoHref"),
+            MatchRow(type: .verified, title: match.verified ? "True" : "False", detail: "verified")
         ])
         
         let relationshipSection = MatchSection(type: .relationships, rows: [
@@ -62,7 +62,10 @@ class MatchTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MatchViewModel(match: match)
+        
+        if let match = match {
+            viewModel = MatchViewModel(match: match)
+        }
     }
 
     // MARK: - UITableViewDataSource & UITableViewDelegate
