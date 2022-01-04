@@ -45,31 +45,4 @@ class DataController {
             self.currentUser = self.allUsers.first
         }
     }
-        
-    func postNewChallenge(hint: String, latitude: Double, longitude: Double, photoImageName: String) {
-        guard let user = currentUser else {
-            return
-        }
-        
-        let location = APILocation(latitude: latitude, longitude: longitude)
-        apiService.postChallenge(forUserID: user.id,
-                                 hint: hint,
-                                 location: location,
-                                 photoImageName: photoImageName) { result in
-            if case .success(let apiChallenge) = result {
-                self.addChallengeToCurrentUser(apiChallenge)
-            }
-        }
-    }
-}
-
-private extension DataController {
-    func addChallengeToCurrentUser(_ apiChallenge: APIChallenge) {
-        currentUser?.challenges.append(Challenge(apiChallenge: apiChallenge))
-        
-        if let currentUser = currentUser,
-           let indexOfCurrentUser = allUsers.firstIndex(where: { $0.id == currentUser.id }) {
-            allUsers[indexOfCurrentUser] = currentUser
-        }
-    }
 }
