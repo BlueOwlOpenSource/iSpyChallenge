@@ -11,12 +11,18 @@ import Foundation
 class APIService {
     func getUsers(completion: @escaping ([APIUser]) -> Void) {
         let users: [APIUser]? = object(fromJSONNamed: "users")
-        completion(users ?? [])
+        
+        executeOnBackground(afterTimeInterval: 2) {
+            completion(users ?? [])
+        }
     }
     
     func getChallenges(completion: @escaping ([APIChallenge]) -> Void) {
         let challenges: [APIChallenge]? = object(fromJSONNamed: "challenges")
-        completion(challenges ?? [])
+        
+        executeOnBackground(afterTimeInterval: 2) {
+            completion(challenges ?? [])
+        }
     }
     
     func postChallenge(forUser userId: String,
@@ -32,7 +38,10 @@ class APIService {
                                         location: location,
                                         matches: [],
                                         ratings: [])
-        completion(.success(apiChallenge))
+        
+        executeOnBackground(afterTimeInterval: 2) {
+            completion(.success(apiChallenge))
+        }
     }
     
     func postMatch(fromUser userId: String,
@@ -47,8 +56,16 @@ class APIService {
                                 verified: false,
                                 user: userId)
         
-        completion(.success(apiMatch))
+        executeOnBackground(afterTimeInterval: 2) {
+            completion(.success(apiMatch))
+        }
     }
+}
+
+private func executeOnBackground(afterTimeInterval timeInterval: TimeInterval, execute: @escaping () -> Void) {
+    DispatchQueue
+        .global(qos: .background)
+        .asyncAfter(deadline: .now() + timeInterval, execute: execute)
 }
 
 private func object<T: Decodable>(fromJSONNamed jsonName: String) -> T? {
