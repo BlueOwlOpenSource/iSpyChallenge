@@ -60,8 +60,10 @@ class DataController {
     func addChallengeForCurrentUser(hint: String,
                                     latitude: Double,
                                     longitude: Double,
-                                    photoImageName: String) {
+                                    photoImageName: String,
+                                    completion: @escaping (_ success: Bool) -> Void) {
         guard let currentUser = currentUser else {
+            completion(false)
             return
         }
         
@@ -69,8 +71,13 @@ class DataController {
                                  hint: hint,
                                  location: APILocation(latitude: latitude, longitude: longitude),
                                  photoImageName: photoImageName) { result in
-            if case .success(let apiChallenge) = result {
+            switch result {
+            case .success(let apiChallenge):
                 self.appendChallenge(Challenge(apiChallenge: apiChallenge), forUser: currentUser.id)
+                completion(true)
+                
+            case .failure:
+                completion(false)
             }
         }
     }
@@ -78,17 +85,24 @@ class DataController {
     func addMatch(forChallenge challengeId: String,
                   latitude: Double,
                   longitude: Double,
-                  photoHref: String) {
+                  photoHref: String,
+                  completion: @escaping (_ success: Bool) -> Void) {
         guard let currentUser = currentUser else {
+            completion(false)
             return
         }
-
+        
         apiService.postMatch(fromUser: currentUser.id,
                              forChallenge: challengeId,
                              location: APILocation(latitude: latitude, longitude: longitude),
                              photo: photoHref) { result in
-            if case .success(let apiMatch) = result {
+            switch result {
+            case .success(let apiMatch):
                 self.appendMatch(Match(apiMatch: apiMatch), forChallenge: challengeId)
+                completion(true)
+                
+            case .failure:
+                completion(false)
             }
         }
     }
