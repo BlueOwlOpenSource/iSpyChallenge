@@ -21,13 +21,15 @@ class DataController {
         }
     }
     
+    // A hack for this project -- assume that the first user is the current user
+    private let currentUserIndex = 0
+    
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
     var currentUser: User? {
-        // A hack for this project -- assume that the first user is the current user
-        allUsers[safe: 0]
+        allUsers[safe: currentUserIndex]
     }
     
     func loadAllData() {
@@ -51,6 +53,28 @@ class DataController {
             dispatchGroup.wait()
             DispatchQueue.main.async {
                 self.allUsers = apiUsers.map { User(apiUser: $0, apiChallenges: apiChallenges) }
+            }
+        }
+    }
+    
+    func addChallengeForCurrentUser(hint: String,
+                                    latitude: Double,
+                                    longitude: Double,
+                                    photoImageName: String) {
+        guard let currentUser = currentUser else {
+            return
+        }
+        
+        apiService.postChallenge(forUserID: currentUser.id,
+                                 hint: hint,
+                                 location: APILocation(latitude: latitude, longitude: longitude),
+                                 photoImageName: photoImageName) { result in
+            if case .success(let apiChallenge) = result {
+                DispatchQueue.main.async {
+                    self.allUsers[self.currentUserIndex]
+                        .challenges
+                        .append(Challenge(apiChallenge: apiChallenge))
+                }
             }
         }
     }
