@@ -85,7 +85,7 @@ class DataController {
     func submitMatch(forChallenge challengeId: String,
                      latitude: Double,
                      longitude: Double,
-                     photoHref: String,
+                     photoImageName: String,
                      completion: @escaping (_ success: Bool) -> Void) {
         guard let currentUser = currentUser,
               !currentUser.challenges.map({ $0.id }).contains(challengeId) else {
@@ -96,7 +96,7 @@ class DataController {
         apiService.postMatch(fromUser: currentUser.id,
                              forChallenge: challengeId,
                              location: APILocation(latitude: latitude, longitude: longitude),
-                             photo: photoHref) { result in
+                             photo: photoImageName) { result in
             switch result {
             case .success(let apiMatch):
                 self.appendMatch(Match(apiMatch: apiMatch), forChallenge: challengeId)
