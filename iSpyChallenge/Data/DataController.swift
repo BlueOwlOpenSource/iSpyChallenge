@@ -57,11 +57,11 @@ class DataController {
         }
     }
     
-    func addChallengeForCurrentUser(hint: String,
-                                    latitude: Double,
-                                    longitude: Double,
-                                    photoImageName: String,
-                                    completion: @escaping (_ success: Bool) -> Void) {
+    func createChallengeForCurrentUser(hint: String,
+                                       latitude: Double,
+                                       longitude: Double,
+                                       photoImageName: String,
+                                       completion: @escaping (_ success: Bool) -> Void) {
         guard let currentUser = currentUser else {
             completion(false)
             return
@@ -82,11 +82,11 @@ class DataController {
         }
     }
     
-    func addMatch(forChallenge challengeId: String,
-                  latitude: Double,
-                  longitude: Double,
-                  photoHref: String,
-                  completion: @escaping (_ success: Bool) -> Void) {
+    func submitMatch(forChallenge challengeId: String,
+                     latitude: Double,
+                     longitude: Double,
+                     photoHref: String,
+                     completion: @escaping (_ success: Bool) -> Void) {
         guard let currentUser = currentUser,
               !currentUser.challenges.map({ $0.id }).contains(challengeId) else {
             completion(false)
