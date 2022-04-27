@@ -6,20 +6,29 @@
 
 import Foundation
 
-protocol DataControllerDelegate: AnyObject {
-    func dataControllerDidUpdate(_ dataController: DataController)
+extension NSNotification.Name {
+    /// Indicates that a `DataController` instance updated its data.
+    /// This notification is only fired on the main thread.
+    static let dataControllerDidUpdate = NSNotification.Name(rawValue: "dataControllerDidUpdate")
 }
 
 class DataController {
     private let apiService: APIService
-    private weak var delegate: DataControllerDelegate?
     
-    private(set) var currentUser: User? { didSet { delegate?.dataControllerDidUpdate(self) } }
-    private(set) var allUsers: [User] = [] { didSet { delegate?.dataControllerDidUpdate(self) } }
+    private(set) var currentUser: User? {
+        didSet {
+            NotificationCenter.default.post(name: .dataControllerDidUpdate, object: self)
+        }
+    }
     
-    init(apiService: APIService, delegate: DataControllerDelegate?) {
+    private(set) var allUsers: [User] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .dataControllerDidUpdate, object: self)
+        }
+    }
+    
+    init(apiService: APIService) {
         self.apiService = apiService
-        self.delegate = delegate
     }
     
     func loadAllData() {
@@ -41,8 +50,10 @@ class DataController {
         
         DispatchQueue.global(qos: .background).async {
             dispatchGroup.wait()
-            self.allUsers = apiUsers.map { User(apiUser: $0, apiChallenges: apiChallenges) }
-            self.currentUser = self.allUsers.first
+            DispatchQueue.main.async {
+                self.allUsers = apiUsers.map { User(apiUser: $0, apiChallenges: apiChallenges) }
+                self.currentUser = self.allUsers.first
+            }
         }
     }
 }

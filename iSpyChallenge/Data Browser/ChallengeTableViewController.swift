@@ -57,19 +57,17 @@ struct ChallengeViewModel {
 
 class ChallengeTableViewController: UITableViewController {
     var dataController: DataController?
-    var challenge: Challenge?
-    var viewModel: ChallengeViewModel?
-
-    // MARK: - Lifecycle
+    var challengeId: String?
+    
+    private var challenge: Challenge?
+    private var viewModel: ChallengeViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let challenge = challenge {
-            viewModel = ChallengeViewModel(challenge: challenge)
-        }
+        updateUI()
+        registerForDataControllerNotifications()
     }
-
+    
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,19 +131,42 @@ class ChallengeTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let challenge = challenge {
-                vc.user = dataController?.user(identifiedBy: challenge.creatorID)
+                vc.userId = dataController?.user(identifiedBy: challenge.creatorID)?.id
             }
         }
         
         if let vc = viewController as? MatchesTableViewController {
             vc.dataController = dataController
-            vc.matches = challenge?.matches ?? []
+            
+            if let challenge = challenge {
+                vc.listType = .matchesForChallenge(challengeId: challenge.id)
+            }
         }
         
         if let vc = viewController as? RatingsTableViewController {
+            vc.dataController = dataController
+            
             if let challenge = challenge {
-                vc.ratingsAndAssociatedUsers = dataController?.ratingsAndAssociatedUsers(for: challenge.ratings) ?? []
+                vc.listType = .ratingsForChallenge(challengeId: challenge.id)
             }
         }
+    }
+    
+    // MARK: Updating UI
+    
+    private func registerForDataControllerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataControllerDidUpdate, object: dataController)
+    }
+    
+    @objc private func updateUI() {
+        challenge = dataController?
+            .allChallenges
+            .first(where: { $0.id == challengeId })
+        
+        if let challenge = challenge {
+            viewModel = ChallengeViewModel(challenge: challenge)
+        }
+        
+        tableView.reloadData()
     }
 }

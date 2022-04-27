@@ -9,7 +9,15 @@ import CoreData
 
 class ChallengesTableViewController: UITableViewController {
     var dataController: DataController?
-    var challenges: [Challenge] = []
+    var userId: String?
+    
+    private var challenges: [Challenge] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+        registerForDataControllerNotifications()
+    }
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
@@ -45,7 +53,22 @@ class ChallengesTableViewController: UITableViewController {
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? ChallengeTableViewController {
             vc.dataController = dataController
-            vc.challenge = challenges[safe: tableView.indexPathForSelectedRow?.row]
+            vc.challengeId = challenges[safe: tableView.indexPathForSelectedRow?.row]?.id
         }
+    }
+    
+    // MARK: Updating UI
+    
+    private func registerForDataControllerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataControllerDidUpdate, object: dataController)
+    }
+    
+    @objc private func updateUI() {
+        challenges = dataController?
+            .allUsers
+            .first(where: { $0.id == userId })?
+            .challenges ?? []
+        
+        tableView.reloadData()
     }
 }

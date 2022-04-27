@@ -8,9 +8,16 @@ import CoreData
 
 class DataBrowserTableViewController: UITableViewController {
     var dataController: DataController?
-    var users: [User] = []
-    let placeholder = UIImage(named: "placeholder")
-
+    
+    private var users: [User] = []
+    private let placeholder = UIImage(named: "placeholder")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+        registerForDataControllerNotifications()
+    }
+    
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,10 +53,21 @@ class DataBrowserTableViewController: UITableViewController {
     
     // MARK: - Injection
     
-    func injectProperties(viewController: UIViewController) {
+    private func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? UserTableViewController {
             vc.dataController = dataController
-            vc.user = users[safe: tableView.indexPathForSelectedRow?.row]
+            vc.userId = users[safe: tableView.indexPathForSelectedRow?.row]?.id
         }
+    }
+    
+    // MARK: Updating UI
+    
+    private func registerForDataControllerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataControllerDidUpdate, object: dataController)
+    }
+    
+    @objc private func updateUI() {
+        users = dataController?.allUsers ?? []
+        tableView.reloadData()
     }
 }

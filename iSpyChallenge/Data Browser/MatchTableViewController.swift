@@ -55,19 +55,17 @@ struct MatchViewModel {
 
 class MatchTableViewController: UITableViewController {
     var dataController: DataController?
-    var match: Match?
-    var viewModel: MatchViewModel?
+    var matchId: String?
     
-    // MARK: - Lifecycle
-
+    private var match: Match?
+    private var viewModel: MatchViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let match = match {
-            viewModel = MatchViewModel(match: match)
-        }
+        updateUI()
+        registerForDataControllerNotifications()
     }
-
+    
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,7 +127,9 @@ class MatchTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let match = match {
-                vc.challenge = dataController?.challenge(for: match)
+                vc.challengeId = dataController?
+                    .challenge(for: match)?
+                    .id
             }
         }
         
@@ -137,8 +137,25 @@ class MatchTableViewController: UITableViewController {
             vc.dataController = dataController
             
             if let match = match {
-                vc.user = dataController?.user(identifiedBy: match.creatorID)
+                vc.userId = dataController?
+                    .user(identifiedBy: match.creatorID)?
+                    .id
             }
         }
+    }
+    
+    // MARK: Updating UI
+    
+    private func registerForDataControllerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataControllerDidUpdate, object: dataController)
+    }
+    
+    @objc private func updateUI() {
+        match = dataController?.allMatches.first(where: { $0.id == matchId })
+        if let match = match {
+            viewModel = MatchViewModel(match: match)
+        }
+        
+        tableView.reloadData()
     }
 }

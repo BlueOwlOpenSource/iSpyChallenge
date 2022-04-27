@@ -9,8 +9,21 @@ import UIKit
 import CoreData
 
 class MatchesTableViewController: UITableViewController {
+    enum ListType {
+        case matchesForUser(userId: String)
+        case matchesForChallenge(challengeId: String)
+    }
+    
     var dataController: DataController?
-    var matches: [Match] = []
+    var listType: ListType?
+    
+    private var matches: [Match] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+        registerForDataControllerNotifications()
+    }
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
@@ -46,7 +59,32 @@ class MatchesTableViewController: UITableViewController {
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? MatchTableViewController {
             vc.dataController = dataController
-            vc.match = matches[safe: tableView.indexPathForSelectedRow?.row]
+            vc.matchId = matches[safe: tableView.indexPathForSelectedRow?.row]?.id
         }
+    }
+    
+    // MARK: Updating UI
+    
+    private func registerForDataControllerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataControllerDidUpdate, object: dataController)
+    }
+    
+    @objc private func updateUI() {
+        switch listType {
+        case .matchesForUser(let userId):
+            matches = dataController?
+                .matches(createdBy: userId) ?? []
+            
+        case .matchesForChallenge(let challengeId):
+            matches = dataController?
+                .allChallenges
+                .first(where: { $0.id == challengeId })?
+                .matches ?? []
+            
+        case nil:
+            break
+        }
+        
+        tableView.reloadData()
     }
 }

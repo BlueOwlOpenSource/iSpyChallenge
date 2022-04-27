@@ -66,14 +66,17 @@ struct UserViewModel {
 
 class UserTableViewController: UITableViewController {
     var dataController: DataController?
-    var user: User?
-    var viewModel: UserViewModel?
+    var userId: String?
+    
+    private var user: User?
+    private var viewModel: UserViewModel?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = UserViewModel(user: user)
+        updateUI()
+        registerForDataControllerNotifications()
     }
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -131,22 +134,38 @@ class UserTableViewController: UITableViewController {
     func injectProperties(viewController: UIViewController) {
         if let vc = viewController as? ChallengesTableViewController {
             vc.dataController = dataController
-            vc.challenges = user?.challenges ?? []
+            vc.userId = user?.id
         }
         
         if let vc = viewController as? MatchesTableViewController {
             vc.dataController = dataController
             
             if let user = user {
-                vc.matches = dataController?.matches(createdBy: user) ?? []
+                vc.listType = .matchesForUser(userId: user.id)
             }
         }
         
         if let vc = viewController as? RatingsTableViewController {
+            vc.dataController = dataController
+            
             if let user = user {
-                let ratings = dataController?.ratings(createdBy: user) ?? []
-                vc.ratingsAndAssociatedUsers = dataController?.ratingsAndAssociatedUsers(for: ratings) ?? []
+                vc.listType = .ratingsCreatedByUser(userId: user.id)
             }
         }
+    }
+    
+    // MARK: Updating UI
+    
+    private func registerForDataControllerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataControllerDidUpdate, object: dataController)
+    }
+    
+    @objc private func updateUI() {
+        user = dataController?
+            .allUsers
+            .first(where: { $0.id == userId} )
+        
+        viewModel = UserViewModel(user: user)
+        tableView.reloadData()
     }
 }
