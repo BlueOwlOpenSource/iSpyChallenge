@@ -19,7 +19,7 @@ class APIService {
         completion(challenges ?? [])
     }
     
-    func postChallenge(forUserID userID: String,
+    func postChallenge(forUser userId: String,
                        hint: String,
                        location: APILocation,
                        photoImageName: String,
@@ -28,11 +28,26 @@ class APIService {
         let apiChallenge = APIChallenge(id: UUID().uuidString,
                                         photo: photoImageName,
                                         hint: hint,
-                                        user: userID,
+                                        user: userId,
                                         location: location,
                                         matches: [],
                                         ratings: [])
         completion(.success(apiChallenge))
+    }
+    
+    func postMatch(fromUser userId: String,
+                   forChallenge challengeId: String,
+                   location: APILocation,
+                   photo: String,
+                   completion: @escaping (Result<APIMatch, Error>) -> Void) {
+        // Mock a successful response from the API
+        let apiMatch = APIMatch(id: UUID().uuidString,
+                                location: location,
+                                photo: photo,
+                                verified: false,
+                                user: userId)
+        
+        completion(.success(apiMatch))
     }
 }
 

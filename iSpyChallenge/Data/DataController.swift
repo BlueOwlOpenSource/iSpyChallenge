@@ -65,17 +65,72 @@ class DataController {
             return
         }
         
-        apiService.postChallenge(forUserID: currentUser.id,
+        apiService.postChallenge(forUser: currentUser.id,
                                  hint: hint,
                                  location: APILocation(latitude: latitude, longitude: longitude),
                                  photoImageName: photoImageName) { result in
             if case .success(let apiChallenge) = result {
-                DispatchQueue.main.async {
-                    self.allUsers[self.currentUserIndex]
-                        .challenges
-                        .append(Challenge(apiChallenge: apiChallenge))
-                }
+                self.appendChallenge(Challenge(apiChallenge: apiChallenge), forUser: currentUser.id)
             }
         }
+    }
+    
+    func addMatch(forChallenge challengeId: String,
+                  latitude: Double,
+                  longitude: Double,
+                  photoHref: String) {
+        guard let currentUser = currentUser else {
+            return
+        }
+
+        apiService.postMatch(fromUser: currentUser.id,
+                             forChallenge: challengeId,
+                             location: APILocation(latitude: latitude, longitude: longitude),
+                             photo: photoHref) { result in
+            if case .success(let apiMatch) = result {
+                self.appendMatch(Match(apiMatch: apiMatch), forChallenge: challengeId)
+            }
+        }
+    }
+}
+
+// MARK: Helpers
+
+private extension DataController {
+    func appendChallenge(_ challenge: Challenge, forUser userId: String) {
+        guard let userIndex = allUsers.firstIndex(where: { $0.id == userId }) else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.allUsers[userIndex]
+                .challenges
+                .append(challenge)
+        }
+    }
+    
+    func appendMatch(_ match: Match, forChallenge challengeId: String) {
+        guard let indexOfUserWhoOwnsChallenge = indexOfUser(whoOwnsChallenge: challengeId),
+              let indexOfChallenge = indexOfChallenge(challengeId, forUserIndex: indexOfUserWhoOwnsChallenge) else {
+                  return
+              }
+        
+        DispatchQueue.main.async {
+            self.allUsers[indexOfUserWhoOwnsChallenge]
+                .challenges[indexOfChallenge]
+                .matches.append(match)
+        }
+    }
+    
+    func indexOfUser(whoOwnsChallenge challengeId: String) -> Int? {
+        allUsers.firstIndex(where: { user in
+            user.challenges.map { $0.id }.contains(challengeId)
+        })
+    }
+    
+    func indexOfChallenge(_ challengeId: String, forUserIndex userIndex: Int) -> Int? {
+        allUsers[safe: userIndex]?
+            .challenges
+            .firstIndex(where: { $0.id == challengeId })
     }
 }
