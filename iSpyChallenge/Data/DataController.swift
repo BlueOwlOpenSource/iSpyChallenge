@@ -15,12 +15,6 @@ extension NSNotification.Name {
 class DataController {
     private let apiService: APIService
     
-    private(set) var currentUser: User? {
-        didSet {
-            NotificationCenter.default.post(name: .dataControllerDidUpdate, object: self)
-        }
-    }
-    
     private(set) var allUsers: [User] = [] {
         didSet {
             NotificationCenter.default.post(name: .dataControllerDidUpdate, object: self)
@@ -29,6 +23,11 @@ class DataController {
     
     init(apiService: APIService) {
         self.apiService = apiService
+    }
+    
+    var currentUser: User? {
+        // A hack for this project -- assume that the first user is the current user
+        allUsers[safe: 0]
     }
     
     func loadAllData() {
@@ -52,7 +51,6 @@ class DataController {
             dispatchGroup.wait()
             DispatchQueue.main.async {
                 self.allUsers = apiUsers.map { User(apiUser: $0, apiChallenges: apiChallenges) }
-                self.currentUser = self.allUsers.first
             }
         }
     }
