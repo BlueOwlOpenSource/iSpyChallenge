@@ -87,7 +87,8 @@ class DataController {
                   longitude: Double,
                   photoHref: String,
                   completion: @escaping (_ success: Bool) -> Void) {
-        guard let currentUser = currentUser else {
+        guard let currentUser = currentUser,
+              !currentUser.challenges.map({ $0.id }).contains(challengeId) else {
             completion(false)
             return
         }
