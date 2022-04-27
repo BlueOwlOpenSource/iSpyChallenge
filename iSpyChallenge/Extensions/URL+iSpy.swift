@@ -7,11 +7,12 @@
 import UIKit
 
 extension URL {
-    var loadedIntoImage: UIImage? {
-        guard let data = try? Data(contentsOf: self) else {
-            return nil
+    func loadedIntoImage( closure: @escaping (UIImage?) -> Void ) {
+        let task = URLSession.shared.dataTask(with: self) { (data, response, error) in
+            DispatchQueue.main.async {
+                closure( data != nil ? UIImage(data: data!) : nil )
+            }
         }
-        
-        return UIImage(data: data)
+        task.resume()
     }
 }

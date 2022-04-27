@@ -9,7 +9,8 @@ import CoreData
 class DataBrowserTableViewController: UITableViewController {
     var dataController: DataController?
     var users: [User] = []
-    
+    let placeholder = UIImage(named: "placeholder")
+
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,7 +23,11 @@ class DataBrowserTableViewController: UITableViewController {
         if let user = users[safe: indexPath.row] {
             cell.textLabel?.text = user.username
             cell.detailTextLabel?.text = user.email
-            cell.imageView?.image = user.avatarLargeURL?.loadedIntoImage
+            cell.imageView?.contentMode = .scaleAspectFill
+            cell.imageView?.image = placeholder
+            user.avatarLargeURL?.loadedIntoImage(closure: { image in
+                cell.imageView?.image = image
+            })
         }
         
         return cell
