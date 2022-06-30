@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0PQ-jD-4k9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0PQ-jD-4k9">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,8 +17,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Aiz-fg-MHK" kind="relationship" relationship="viewControllers" id="uHN-Ca-QTj"/>
                         <segue destination="189-85-OKb" kind="relationship" relationship="viewControllers" id="2lr-r9-WmY"/>
+                        <segue destination="Aiz-fg-MHK" kind="relationship" relationship="viewControllers" id="uHN-Ca-QTj"/>
                         <segue destination="6pO-5Q-XQB" kind="relationship" relationship="viewControllers" id="U9O-9y-KaJ"/>
                     </connections>
                 </tabBarController>
@@ -42,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jjh-E5-9vR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351.19999999999999" y="920.68965517241384"/>
+            <point key="canvasLocation" x="476" y="930"/>
         </scene>
         <!--Near Me-->
         <scene sceneID="Z3L-Q6-NzK">
@@ -61,7 +62,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gW8-Dt-szy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="476" y="920.68965517241384"/>
+            <point key="canvasLocation" x="-388" y="930"/>
         </scene>
         <!--Data Browser-->
         <scene sceneID="3c3-kB-GpV">
@@ -80,7 +81,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeF-fg-gZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="915"/>
+            <point key="canvasLocation" x="1329" y="930"/>
         </scene>
         <!--NewChallenge-->
         <scene sceneID="ytQ-Z9-UIm">
@@ -90,7 +91,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmc-4K-oY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="1348"/>
+            <point key="canvasLocation" x="476" y="1348"/>
         </scene>
         <!--NearMe-->
         <scene sceneID="FcU-rG-PCh">
@@ -100,7 +101,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBy-vF-ipr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="476" y="1348"/>
+            <point key="canvasLocation" x="-388" y="1348"/>
         </scene>
         <!--DataBrowser-->
         <scene sceneID="vqE-Ke-LZV">

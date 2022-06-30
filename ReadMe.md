@@ -1,34 +1,47 @@
 # iSpyChallenge
 
-This repository contains an Xcode project that is used as a starting point for the iSpy App programming challenge used.
+This repository contains an Android Studio project that is used as a starting point for the iSpy App Tech challenge.
 
-## Process
+## Challenge
 
-The goal of the challenge is to provide a springboard for you to be able to really demonstrate your core strengths.  During a three hour block of time you will be asked to build a portion of a small iOS application.  The Xcode project in this repo contains a starting point for your work. There are three tabs in the application. The first two are placeholders for  your work. The third tab contains a data browser for exploring the sample data included with the project.
+The goal of the challenge is to provide a project for you to be able to demonstrate your core strengths and evaluate your technical skills. The prompt of your challenge will be provided by the hiring manager or interviewer for your role and you will be building on top of the pre-defined application. You may use your own computer for the challenge and feel free to treat this as your normal environment, so utilizing the internet and libraries/tools to achieve your solution is permitted. The only ask if you are copying and pasting any code from online or old code base, please provide comments to show you understand what you're copying.
 
-You may use your own computer system for this exercise.  
+The concept for the app is a global game of "I Spy" where users can take pictures of objects they find in the world and have others try to find the same object given only a cryptic hint.
 
-Clone the project on GitHub and work from your public repo.  When finished with the challenge please create your own GitHub repo and push your work to it so we can take a look at the results.  Be sure to tell your interviewer what your GitHub user name is and the name of your repo.  For example, if your GitHub username is 'RockStar' and you create a public repo called 'mySpyChallenge', the following commands will get you started.
+The application contains 3 tabs:
+
+* Near Me: Placeholder for your work
+* New Challenge: Placeholder for your work
+* Data Browser: Tab to allow you to explore the data included in the project.
+
+If any questions/concerns come up during the challenge, please feel free to reach out to your interview to get answers/clarifications.
+
+## Setup Process
+
+In order to start the challenge, we ask candidates to clone the repository in their own GitHub account. Please refer to the below snippet of code to create a clone of the project. All you need to do is update the `[username]` tag with your own GitHub username.
 
 ````
 $ cd ~/Desktop
-$ git clone git@github.com:BlueOwlDev/iSpyChallenge.git --origin BlueOwl mySpyChallenge
+$ git clone https://github.com/BlueOwlDev/iSpyChallenge.git --origin BlueOwl mySpyChallenge
 $ cd mySpyChallenge
-$ git remote add origin git@github.com:RockStar/mySpyChallenge.git
-$ git push -u origin master
+$ git remote add origin https://github.com/[username]/mySpyChallenge.git
+$ git push -u origin main
 ````
 
-Your goal is to implement the "New Challenge" and "Near Me" tabs in the app.  Refer to the documentation provided earlier for details on the model objects and what functionality the user interface should include.
+## Submit Process
 
-You will have 3 hours to work on the project. 
+Once you have completed your challenge, we ask that you commit your changes to your main branch and push them up to remote origin. Then please provide the hiring manager or your interviewer a link to your project so we can then download the ZIP for reviewing/archiving. We appreciate and thank you for taking the time to take our challenge.
+ 
 
 ## Xcode Project Overview
 
 The model objects for the app are provided, along with some sample data for use during the exercise.  All data is maintained in memory and is loaded from sample JSON files, via a mock API service, when the app launches.
  
-Access to the sample data is provided via the DataController class.  You will need to utilize this class in order to complete the challenge.  iSpyTabBarController constructs the DataController and passes it into each of its view controllers (currently only DataBrowserViewController).  Additionally, there are convenience functions for navigating DataController's data in DataController+iSpy.swift.
+Access to the sample data is provided via the DataController class. You will need to utilize this class in order to complete the challenge.  iSpyTabBarController constructs the DataController and passes it into each of its view controllers (currently only DataBrowserViewController).  Additionally, there are convenience functions for navigating DataController's data in DataController+iSpy.swift.
 
 ## Screen Shots
+
+The following screenshots are what the initial implementation of the application looks like.
 
 <kbd><img src="NewChallenge.png" alt="New Challenge" width="240"/>
 
